@@ -16,3 +16,5 @@ Route::get('/', 'PagesController@root')->name('root');
 Auth::routes(['verify' => true]);
 
 
+
+Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
