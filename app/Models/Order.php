@@ -8,4 +8,9 @@ class Order extends Model
     // 设定order_date返回类型为 时间类型 方便直接使用carbon 处理时间
     protected $dates = ['order_date'];
 
+      public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
