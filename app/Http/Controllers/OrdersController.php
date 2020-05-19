@@ -6,7 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
-
+use Auth;
 class OrdersController extends Controller
 {
     public function __construct()
@@ -30,9 +30,17 @@ class OrdersController extends Controller
 		return view('orders.create_and_edit', compact('order'));
 	}
 
-	public function store(OrderRequest $request)
+	public function store(OrderRequest $request,Order $order)
 	{
-		$order = Order::create($request->all());
+		// $order = Order::create($request->all());
+        $order->fill($request->all());
+        $order->user_id = Auth::id();
+        $order->total_cost = 0;//创建订单时总金额为0  追加订单详情时。再更新数值
+        $order->order_state ='待审核'; //默认值为待审核。  财务人员 可更改为审核通过。或审核失败。
+        $order->order_detail_id=0;//应该是搞成数组 存订单详情的id来着  这里先不动
+        $order->arrears=0;
+        //尚欠金额=订单总金额-支付金额-2307可抵免税款     因为创建订单时，订单详情还没填写，所以尚欠金额创建时设为0 当订单详情填写后动态更改尚欠金额。  会有很多bug 如之后更改金额
+        $order->save();
 		return redirect()->route('orders.show', $order->id)->with('message', 'Created successfully.');
 	}
 

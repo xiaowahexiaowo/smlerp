@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Blade;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
 	{
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
 		\App\Models\Order::observe(\App\Observers\OrderObserver::class);
+
 
         //
     }

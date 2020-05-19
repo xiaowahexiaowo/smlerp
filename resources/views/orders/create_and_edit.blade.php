@@ -64,11 +64,20 @@
                 </div>
                 <div class="form-group">
                 	<label for="order_ticket-field">订单摘要</label>
-                	<input class="form-control" type="text" name="order_ticket" id="order_ticket-field" value="{{ old('order_ticket', $order->order_ticket ) }}" />
+                	          <select class="form-control" name="order_ticket" required>
+                  <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
+
+                      <option value="开票" {{ $order->order_ticket == '开票' ? 'selected' : '' }}>
+                        开票
+                      </option>
+                       <option value="不开票" {{ $order->order_ticket == '不开票' ? 'selected' : '' }}>
+                        不开票
+                      </option>
+                </select>
                 </div>
                 <div class="form-group">
                 	<label for="customer_name-field">客户名称</label>
-                	<textarea name="customer_name" id="customer_name-field" class="form-control" rows="3">{{ old('customer_name', $order->customer_name ) }}</textarea>
+                <input class="form-control" type="text" name="customer_name" id="customer_name-field" value="{{ old('customer_name', $order->customer_name) }}" />
                 </div>
 
                 <div class="form-group">
@@ -113,10 +122,7 @@
                     <label for="tax_deductible-field">可抵免税款</label>
                     <input class="form-control" type="text" name="tax_deductible" id="tax_deductible-field" value="{{ old('tax_deductible', $order->tax_deductible ) }}" />
                 </div>
-                <div class="form-group">
-                    <label for="arrears-field">尚欠金额</label>
-                    <input class="form-control" type="text" name="arrears" id="arrears-field" value="{{ old('arrears', $order->arrears ) }}" />
-                </div>
+
 
 
                 <div class="form-group">
