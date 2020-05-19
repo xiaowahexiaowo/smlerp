@@ -18,3 +18,5 @@ Auth::routes(['verify' => true]);
 
 
 Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::post('upload_image', 'OrdersController@uploadImage')->name('orders.upload_image');

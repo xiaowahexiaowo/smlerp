@@ -8,7 +8,7 @@
 
       <div class="card-header">
         <h1>
-          订单 /
+          销售单 /
           @if($order->id)
             编辑 #{{ $order->id }}
           @else
@@ -125,7 +125,7 @@
 
 
 
-                <div class="form-group">
+                <div class="form-group orders-body">
                 	<label for="appendix-field">附件</label>
                 	<textarea name="appendix" id="appendix-field" class="form-control" rows="3">{{ old('appendix', $order->appendix ) }}</textarea>
                 </div>
@@ -164,6 +164,16 @@
     $(document).ready(function() {
       var editor = new Simditor({
         textarea: $('#appendix-field'),
+           upload: {
+          url: '{{ route('orders.upload_image') }}',
+          params: {
+            _token: '{{ csrf_token() }}'
+          },
+          fileKey: 'upload_file',
+          connectionCount: 4,
+          leaveConfirm: '文件上传中，关闭此页面将取消上传。'
+        },
+        pasteImage: true,
       });
     });
   </script>

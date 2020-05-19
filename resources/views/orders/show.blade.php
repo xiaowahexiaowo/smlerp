@@ -6,7 +6,7 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>订单 /  #{{ $order->id }}</h1>
+        <h1>销售单 /  #{{ $order->id }}</h1>
       </div>
 
       <div class="card-body">
@@ -72,7 +72,7 @@
 </p>
  <label>附件</label>
 <p>
-	{{ $order->appendix }}
+	{!! $order->appendix !!}
 </p>
       </div>
     </div>
