@@ -3,14 +3,14 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersTable extends Migration 
+class CreateOrdersTable extends Migration
 {
 	public function up()
 	{
 		Schema::create('orders', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('order_no')->unique()->unsigned();
-            $table->integer('order_id')->unique()->unsigned();
+            $table->string('order_id')->unique()->unsigned();
             $table->string('order_type');
             $table->datetime('order_date');
             $table->string('order_ticket');
