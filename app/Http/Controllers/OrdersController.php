@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,6 +29,11 @@ class OrdersController extends Controller
 	{
 		return view('orders.create_and_edit', compact('order'));
 	}
+
+    public function createDetail(Order $orders)
+    {
+        return view('orderdetails.create', compact('orders'));
+    }
 
 	public function store(OrderRequest $request,Order $order)
 	{

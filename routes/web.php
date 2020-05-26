@@ -19,4 +19,9 @@ Auth::routes(['verify' => true]);
 
 Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
+Route::get('create_detail/{orders}','OrdersController@createDetail')->name('orders.create_detail');
+
+// 待定
+Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', 'show', 'create', 'store', 'destroy']]);
+
 Route::post('upload_image', 'OrdersController@uploadImage')->name('orders.upload_image');

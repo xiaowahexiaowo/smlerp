@@ -44,7 +44,7 @@
 
                     <button type="submit" class="btn btn-sm btn-danger">删除 </button>
                   </form>
-                  <a class="btn btn-sm btn-success" href="{{ route('orders.edit', $order->id) }}">
+                  <a class="btn btn-sm btn-success" href="{{ route('orders.create_detail', $order->id) }}">
                     添加明细
                   </a>
 
