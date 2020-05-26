@@ -58,9 +58,23 @@ class OrdersController extends Controller
 	public function update(OrderRequest $request, Order $order)
 	{
 		$this->authorize('update', $order);
-		$order->update($request->all());
+        // 如果编辑销售单的支付金额 和定免税款 同时不存在对应的订单详情 那么需要重新计算
+        if($order->total_cost==0){
+            $order->update($request->all());
 
-		return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
+        }else{
+            // 简化代码 多计算几次无所谓
+            $arrears=$order->total_cost-$request->input('payment_amount')-$request->input('tax_deductible');
+            // $request->input('arrears',  $arrears);
+            $order->update($request->all());
+
+             $order->update(['arrears'=>$arrears]);
+        }
+         return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
+        // if((!$request->input('payment_amount'))||(!$request->input('tax_deductible'))){
+        //     $arrears=$order->total_cost-$request->input('payment_amount')-$request->input('tax_deductible');
+        // }
+
 	}
 
 	public function destroy(Order $order)
