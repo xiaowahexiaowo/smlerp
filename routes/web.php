@@ -21,6 +21,8 @@ Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'crea
 
 Route::get('create_detail/{orders}','OrdersController@createDetail')->name('orders.create_detail');
 
+Route::get('order_detail','OrdersController@showDetail')->name('orders.order_detail');
+
 // 待定
 Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', 'show', 'create', 'store', 'destroy']]);
 

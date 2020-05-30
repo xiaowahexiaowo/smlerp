@@ -112,4 +112,11 @@ class OrdersController extends Controller
         }
         return $data;
     }
+
+    public function showDetail(){
+        // with 预加载  解决N+1 问题
+           $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+           // 审核通过的  再显示到销售明细单里？
+        return view('orders.order_detail', compact('orders'));
+    }
 }
