@@ -4,6 +4,12 @@
     <a class="navbar-brand " href="{{ url('/') }}">
     SmlErp
     </a>
+    <a class="navbar-brand " href="{{ url('/') }}">
+    销售单明细
+    </a>
+      <a class="navbar-brand " href="{{ url('/orders') }}">
+    销售单
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>

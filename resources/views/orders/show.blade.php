@@ -49,8 +49,34 @@
         <p>
                   {!! $order->appendix !!}
               </p>
-        <br>
 
+        <br>
+ <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+
+                <th>机组编号</th> <th>产品类型</th> <th>机组类型</th> <th>功率</th> <th>相数</th> <th>单位</th> <th>入库单价</th> <th>出库数量</th> <th>金额</th> <th>备注</th> <th>操作</th>
+
+              </tr>
+            </thead>
+             <tbody>
+
+             @foreach($order->orderdetails as $detail)
+              <tr>
+               <td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->count}}</td><td>{{$detail->amount}}</td><td>{{$detail->remarks}}</td>
+
+               <td  class="text-xs-right">
+                   <form action="{{ route('orderdetails.destroy', $detail->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                    {{csrf_field()}}
+                    <input type="hidden" name="_method" value="DELETE">
+
+                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                  </form>
+               </td>
+              </tr>
+              @endforeach
+            </tbody>
+ </table>
 <!--         <label>No 号</label>
 <p >
 	{{ $order->order_no }}

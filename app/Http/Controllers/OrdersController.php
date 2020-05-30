@@ -65,10 +65,14 @@ class OrdersController extends Controller
         }else{
             // 简化代码 多计算几次无所谓
             $arrears=$order->total_cost-$request->input('payment_amount')-$request->input('tax_deductible');
-            // $request->input('arrears',  $arrears);
-            $order->update($request->all());
 
-             $order->update(['arrears'=>$arrears]);
+          // 优化以下代码
+            // $order->update($request->all());
+            //  $order->update(['arrears'=>$arrears]);
+            // 优化后
+            $order->fill($request->all());
+            $order->fill(['arrears'=>$arrears])->save();
+
         }
          return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
         // if((!$request->input('payment_amount'))||(!$request->input('tax_deductible'))){
@@ -79,8 +83,10 @@ class OrdersController extends Controller
 
 	public function destroy(Order $order)
 	{
+
 		$this->authorize('destroy', $order);
 		$order->delete();
+
 
 		return redirect()->route('orders.index')->with('message', 'Deleted successfully.');
 	}

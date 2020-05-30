@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Orderdetail;
 // use App\Models\Setting;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 class OrderdetailsController extends Controller
@@ -21,6 +22,7 @@ class OrderdetailsController extends Controller
         $detail->fill($request->all());
 $generating_unit_no = $request->input('generating_unit_no');
 $set=DB::table('setting')->where('generating_unit_no', $generating_unit_no)->first();
+
 if(!$set){
     session()->flash('warning', '机组编号不存在！');
  return redirect()->route('orders.index');
@@ -36,5 +38,14 @@ if(!$set){
         $detail->amount=($request->input('count'))*($set->warehousing_price);
         $detail->save();
         return redirect()->route('orders.index')->with('message', '订单详情创建成功！');
+    }
+
+        public function destroy(Orderdetail $orderdetail)
+    {
+
+        // 接收参数必须设置为$orderdetail  真坑
+        $orderdetail->delete();
+
+        return redirect()->route('orders.index')->with('message', 'Deleted successfully.');
     }
 }
