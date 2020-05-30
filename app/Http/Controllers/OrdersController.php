@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+
+use App\Exports\OrdersExport;
+
 class OrdersController extends Controller
 {
     public function __construct()
@@ -118,5 +121,12 @@ class OrdersController extends Controller
            $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
            // 审核通过的  再显示到销售明细单里？
         return view('orders.order_detail', compact('orders'));
+    }
+
+     public function export()
+    {
+        // return (new InvoicesExport)->forYear(2018)->download('invoices.xlsx');
+        // return Excel::download(new OrdersExport, '销售明细单.xlsx');
+         return (new OrdersExport)->download('销售明细单.xlsx');
     }
 }

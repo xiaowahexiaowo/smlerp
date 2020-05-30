@@ -23,6 +23,8 @@ Route::get('create_detail/{orders}','OrdersController@createDetail')->name('orde
 
 Route::get('order_detail','OrdersController@showDetail')->name('orders.order_detail');
 
+Route::get('exportdetail','OrdersController@export')->name('orders.export');
+
 // 待定
 Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', 'show', 'create', 'store', 'destroy']]);
 

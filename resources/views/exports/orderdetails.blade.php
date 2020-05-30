@@ -1,19 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-  <div class="col-md-13 ">
-    <div class="card ">
-      <div class="card-header">
-        <h1>
-       <!-- 这里编写查询 -->
-          <a class="btn btn-success float-xs-right" href="{{ route('orders.export') }}">导出Excel</a>
-        </h1>
-      </div>
-
-      <div class="card-body">
-        @if($orders->count())
-          <table class="table table-sm table-striped">
+  <table class="table table-sm table-striped">
             <thead>
               <tr>
 
@@ -42,13 +27,3 @@
               @endforeach
             </tbody>
           </table>
-          {!! $orders->render() !!}
-        @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
-        @endif
-      </div>
-    </div>
-  </div>
-</div>
-
-@endsection
