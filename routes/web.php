@@ -21,7 +21,7 @@ Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'crea
 
 Route::get('create_detail/{orders}','OrdersController@createDetail')->name('orders.create_detail');
 
-Route::get('order_detail','OrdersController@showDetail')->name('orders.order_detail');
+Route::get('order_detail/{date_begin?}{date_end?}{order_type?}','OrdersController@showDetail')->name('orders.order_detail');
 
 Route::get('exportdetail','OrdersController@export')->name('orders.export');
 

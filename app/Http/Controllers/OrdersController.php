@@ -116,9 +116,26 @@ class OrdersController extends Controller
         return $data;
     }
 
-    public function showDetail(){
+    public function showDetail(OrderRequest $request){
         // with 预加载  解决N+1 问题
-           $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+           // $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+        $order_type=$request->input('order_type');
+        $date_begin=$request->input('date_begin');
+        $date_end=$request->input('date_end');
+         // 保存查询参数  供导出时使用
+        $request->flash();
+        if($order_type){
+            if($date_begin&&$date_end){
+                $orders = Order::where('order_type',$order_type)->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+            }else{
+                $orders = Order::where('order_type',$order_type)->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+            }
+        }elseif ($date_begin&&$date_end) {
+             $orders = Order::whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+        }else{
+            $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+        }
+
            // 审核通过的  再显示到销售明细单里？
         return view('orders.order_detail', compact('orders'));
     }
