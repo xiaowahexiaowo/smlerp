@@ -29,3 +29,5 @@ Route::get('exportdetail','OrdersController@export')->name('orders.export');
 Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', 'show', 'create', 'store', 'destroy']]);
 
 Route::post('upload_image', 'OrdersController@uploadImage')->name('orders.upload_image');
+
+Route::resource('collecteds', 'CollectedsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

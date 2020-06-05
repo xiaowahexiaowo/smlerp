@@ -11,6 +11,10 @@
     <a class="navbar-brand " href="{{ route('orders.order_detail') }}">
     销售单明细
     </a>
+  <a class="navbar-brand " href="{{ route('collecteds.index') }}">
+    收款明细
+    </a>
+
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
