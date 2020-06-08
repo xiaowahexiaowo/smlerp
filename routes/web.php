@@ -31,3 +31,4 @@ Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', '
 Route::post('upload_image', 'OrdersController@uploadImage')->name('orders.upload_image');
 
 Route::resource('collecteds', 'CollectedsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('receivables', 'ReceivablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

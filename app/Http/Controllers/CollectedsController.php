@@ -66,3 +66,6 @@ class CollectedsController extends Controller
 		return redirect()->route('collecteds.index')->with('message', 'Deleted successfully.');
 	}
 }
+
+
+

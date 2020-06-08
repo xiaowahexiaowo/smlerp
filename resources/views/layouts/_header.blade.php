@@ -14,6 +14,9 @@
   <a class="navbar-brand " href="{{ route('collecteds.index') }}">
     收款明细
     </a>
+      <a class="navbar-brand " href="{{ route('receivables.index') }}">
+    应收账款统计
+    </a>
 
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
