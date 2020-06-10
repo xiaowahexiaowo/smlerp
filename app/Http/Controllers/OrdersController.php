@@ -19,7 +19,15 @@ class OrdersController extends Controller
 
 	public function index()
 	{
-		$orders = Order::paginate();
+        $user=Auth::user();
+        $name=$user->name;
+         // 有审核权限的人 可以查看所有数据
+        if($name==config('global.approval_sale1')||$name==config('global.approval_sale2')||$name==config('global.approval_sale3')){
+            $orders = Order::paginate(30);
+        }else{
+          $orders=Order::where('user_id',$user->id)->paginate(30);
+        }
+
 		return view('orders.index', compact('orders'));
 	}
 
@@ -35,6 +43,7 @@ class OrdersController extends Controller
 
     public function createDetail(Order $orders)
     {
+        $this->authorize('createDetail', $orders);
         return view('orderdetails.create', compact('orders'));
     }
 
@@ -126,14 +135,14 @@ class OrdersController extends Controller
         $request->flash();
         if($order_type){
             if($date_begin&&$date_end){
-                $orders = Order::where('order_type',$order_type)->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+                $orders = Order::where([ ['order_type','=',$order_type],['order_state', '!=', '待审核'], ])->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
             }else{
-                $orders = Order::where('order_type',$order_type)->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+                $orders = Order::where([ ['order_type','=',$order_type],['order_state', '!=', '待审核'], ])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
             }
         }elseif ($date_begin&&$date_end) {
-             $orders = Order::whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+             $orders = Order::where('order_state','!=','待审核')->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         }else{
-            $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+            $orders = Order::where('order_state','!=','待审核')->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         }
 
            // 审核通过的  再显示到销售明细单里？
@@ -145,5 +154,10 @@ class OrdersController extends Controller
         // return (new InvoicesExport)->forYear(2018)->download('invoices.xlsx');
         // return Excel::download(new OrdersExport, '销售明细单.xlsx');
          return (new OrdersExport)->download('销售明细单.xlsx');
+    }
+
+    public function check(Order $order){
+            $this->authorize('check');
+        return view('orders.check', compact('order'));
     }
 }

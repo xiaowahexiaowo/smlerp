@@ -25,6 +25,7 @@ Route::get('order_detail/{date_begin?}{date_end?}{order_type?}','OrdersControlle
 
 Route::get('exportdetail','OrdersController@export')->name('orders.export');
 
+Route::get('orders/{order}/check', 'OrdersController@check')->name('orders.check');
 // 待定
 Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', 'show', 'create', 'store', 'destroy']]);
 

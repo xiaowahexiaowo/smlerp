@@ -31,6 +31,7 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
+
                 <div class="form-group">
                     <label for="order_no-field">No 号</label>
                     <input class="form-control" type="text" name="order_no" id="order_no-field" value="{{ old('order_no', $order->order_no ) }}" />
@@ -111,10 +112,7 @@
                       </option>
                 </select>
                 </div>
-                <div class="form-group">
-                	<label for="remark-field">备注</label>
-                	<input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $order->remark ) }}" />
-                </div>
+
                 <div class="form-group">
                     <label for="payment_amount-field">支付金额</label>
                     <input class="form-control" type="text" name="payment_amount" id="payment_amount-field" value="{{ old('payment_amount', $order->payment_amount ) }}" />
@@ -129,6 +127,11 @@
                 <div class="form-group orders-body">
                 	<label for="appendix-field">附件</label>
                 	<textarea name="appendix" id="appendix-field" class="form-control" rows="3">{{ old('appendix', $order->appendix ) }}</textarea>
+                </div>
+
+                    <div class="form-group">
+                  <label for="remark-field">备注</label>
+                  <input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $order->remark ) }}" />
                 </div>
 
           <div class="well well-sm">

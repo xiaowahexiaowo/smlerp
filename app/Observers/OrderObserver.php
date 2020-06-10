@@ -14,9 +14,10 @@ class OrderObserver
         //
     }
 
-    public function updating(Order $order)
+    public function updated(Order $order)
     {
-        //
+
+
     }
 
     public function deleted(Order $order){

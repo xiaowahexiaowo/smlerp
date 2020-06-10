@@ -34,14 +34,15 @@ class CollectedsController extends Controller
 	{
 		$collected->fill($request->all());
         $order_id=$request->input('order_id');
-         $order=DB::table('orders')->where('order_id',$order_id)->first();
+        // 审核通过  订单存在  则创建
+         $order=DB::table('orders')->where([['order_id',$order_id],['order_state','审核通过'],])->first();
          if($order){
           $collected->customer_name=$order->customer_name;
            $collected->save();
            return redirect()->route('collecteds.index')->with('message', '创建成功.');
          }
 
-		return redirect()->route('collecteds.index')->with('message', '创建失败，订单号不存在.');
+		return redirect()->route('collecteds.index')->with('message', '创建失败，订单号不存在.或未审核通过！');
 	}
 
 	public function edit(Collected $collected)

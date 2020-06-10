@@ -19,16 +19,16 @@ class OrdersExport implements FromView
         $date_begin=Request::old('date_begin');
         $date_end=Request::old('date_end');
 
-        if($order_type){
+       if($order_type){
             if($date_begin&&$date_end){
-                $orders = Order::where('order_type',$order_type)->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+                $orders = Order::where([ ['order_type','=',$order_type],['order_state', '!=', '待审核'], ])->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
             }else{
-                $orders = Order::where('order_type',$order_type)->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+                $orders = Order::where([ ['order_type','=',$order_type],['order_state', '!=', '待审核'], ])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
             }
         }elseif ($date_begin&&$date_end) {
-             $orders = Order::whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+             $orders = Order::where('order_state','!=','待审核')->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         }else{
-            $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+            $orders = Order::where('order_state','!=','待审核')->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         }
 
                 return view('exports.orderdetails'

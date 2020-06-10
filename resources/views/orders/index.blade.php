@@ -34,9 +34,23 @@
                     查看
                   </a>
 
+                 @if($order->order_state=='待审核')
                   <a class="btn btn-sm btn-warning" href="{{ route('orders.edit', $order->id) }}">
                     编辑
                   </a>
+                  @endif
+
+                @if(Auth::user()->name==config('global.approval_sale1')&&$order->order_state=='待审核')
+                  <a class="btn btn-sm btn-warning" href="{{ route('orders.edit', $order->id) }}">
+                    初步审核
+                  </a>
+                 @elseif(Auth::user()->name==config('global.approval_sale2')&&$order->order_state=='初步审核')
+                 <a class="btn btn-sm btn-warning" href="{{ route('orders.edit', $order->id) }}">
+                    二次审核
+                  </a>
+                  @elseif(Auth::user()->name==config('global.approval_sale3')&&$order->order_state=='二次审核'&&$order->total_cost>36000)
+                    最终审核
+                  @endif
 
                   <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
@@ -44,9 +58,11 @@
 
                     <button type="submit" class="btn btn-sm btn-danger">删除 </button>
                   </form>
+                  @if($order->order_state=='待审核')
                   <a class="btn btn-sm btn-success" href="{{ route('orders.create_detail', $order->id) }}">
                     添加明细
                   </a>
+                  @endif
 
                 </td>
               </tr>

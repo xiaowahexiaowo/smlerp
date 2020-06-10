@@ -16,12 +16,7 @@ class ReceivablesController extends Controller
 
 	public function index(Receivable $receivable)
 	{
-        // $orders=DB::table('order')->where('order_state','已通过')->get();
-        //  foreach ($orders as $order) {
 
-        //   }
-
-		// $receivable->
         $receivables = Receivable::paginate();
 		return view('receivables.index', compact('receivables'));
 	}
