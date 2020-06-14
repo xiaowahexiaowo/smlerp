@@ -34,11 +34,11 @@
 
                 <div class="form-group">
                     <label for="order_no-field">No 号</label>
-                    <input class="form-control" type="text" name="order_no" id="order_no-field" value="{{ old('order_no', $order->order_no ) }}" />
+                    <input class="form-control" type="text" name="order_no" id="order_no-field" value="{{ old('order_no', $order->order_no ) }}"  required />
                 </div>
                 <div class="form-group">
                     <label for="order_id-field">订单编号</label>
-                    <input class="form-control" type="text" name="order_id" id="order_id-field" value="{{ old('order_id', $order->order_id ) }}" />
+                    <input class="form-control" type="text" name="order_id" id="order_id-field" value="{{ old('order_id', $order->order_id ) }}"  required />
                 </div>
                 <div class="form-group">
                 	<label for="order_type-field">订单类型</label>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="order_date-field">订单日期</label>
-                    <input class="form-control" type="text" name="order_date" id="order_date-field" value="{{ old('order_date', $order->order_date ) }}" />
+                    <input class="form-control" type="text" name="order_date" id="order_date-field" value="{{ old('order_date', $order->order_date ) }}"  required />
                 </div>
                 <div class="form-group">
                 	<label for="order_ticket-field">订单摘要</label>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                 	<label for="customer_name-field">客户名称</label>
-                <input class="form-control" type="text" name="customer_name" id="customer_name-field" value="{{ old('customer_name', $order->customer_name) }}" />
+                <input class="form-control" type="text" name="customer_name" id="customer_name-field" value="{{ old('customer_name', $order->customer_name) }}"  required />
                 </div>
 
                 <div class="form-group">
@@ -115,23 +115,23 @@
 
                 <div class="form-group">
                     <label for="payment_amount-field">支付金额</label>
-                    <input class="form-control" type="text" name="payment_amount" id="payment_amount-field" value="{{ old('payment_amount', $order->payment_amount ) }}" />
+                    <input class="form-control" type="text" name="payment_amount" id="payment_amount-field" value="{{ old('payment_amount', $order->payment_amount ) }}"  required />
                 </div>
                 <div class="form-group">
                     <label for="tax_deductible-field">可抵免税款</label>
-                    <input class="form-control" type="text" name="tax_deductible" id="tax_deductible-field" value="{{ old('tax_deductible', $order->tax_deductible ) }}" />
+                    <input class="form-control" type="text" name="tax_deductible" id="tax_deductible-field" value="{{ old('tax_deductible', $order->tax_deductible ) }}"  required />
                 </div>
 
 
 
                 <div class="form-group orders-body">
                 	<label for="appendix-field">附件</label>
-                	<textarea name="appendix" id="appendix-field" class="form-control" rows="3">{{ old('appendix', $order->appendix ) }}</textarea>
+                	<textarea name="appendix" id="appendix-field" class="form-control" rows="3"  required >{{ old('appendix', $order->appendix ) }}</textarea>
                 </div>
 
                     <div class="form-group">
                   <label for="remark-field">备注</label>
-                  <input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $order->remark ) }}" />
+                  <input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $order->remark ) }}"  required />
                 </div>
 
           <div class="well well-sm">

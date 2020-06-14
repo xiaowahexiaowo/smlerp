@@ -11,11 +11,12 @@ class CollectedsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['show']]);
     }
 
-	public function index()
+	public function index(Collected $collected)
 	{
+        $this->authorize('index',$collected);
 		$collecteds = Collected::paginate();
 		return view('collecteds.index', compact('collecteds'));
 	}
@@ -35,7 +36,7 @@ class CollectedsController extends Controller
 		$collected->fill($request->all());
         $order_id=$request->input('order_id');
         // 审核通过  订单存在  则创建
-         $order=DB::table('orders')->where([['order_id',$order_id],['order_state','审核通过'],])->first();
+         $order=DB::table('orders')->where([['order_id',$order_id],['order_state','已通过'],])->first();
          if($order){
           $collected->customer_name=$order->customer_name;
            $collected->save();
@@ -62,7 +63,28 @@ class CollectedsController extends Controller
 	public function destroy(Collected $collected)
 	{
 		$this->authorize('destroy', $collected);
-		$collected->delete();
+
+          $collected->delete();
+
+                    // 收款记录同个订单的
+          $collecteds=DB::table('collecteds')->where('order_id',$collected->order_id)->get();
+            // 小bug 订单明细不存在的时候。删不掉应收款。记录  没啥影响的。
+          if($collecteds){
+            $received=0;
+            foreach ($collecteds as $collect) {
+                $received+=$collect->collected_amount;
+            }
+                $order=DB::table('orders')->where([['order_id',$collected->order_id],['order_state','已通过'],])->first();
+            DB::table('receivables')->where('order_id',$collected->order_id)->update([
+            'received'=>$received,'remaining_receivables'=>($order->total_cost-$received)
+            ]);
+          }else{
+              // 订单收款记录不存在 应收款删除对应记录
+              DB::table('receivables')->where('order_id',$collected->order_id)->delete();
+          }
+
+
+
 
 		return redirect()->route('collecteds.index')->with('message', 'Deleted successfully.');
 	}

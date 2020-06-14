@@ -21,6 +21,7 @@ class OrdersController extends Controller
 	{
         $user=Auth::user();
         $name=$user->name;
+
          // 有审核权限的人 可以查看所有数据
         if($name==config('global.approval_sale1')||$name==config('global.approval_sale2')||$name==config('global.approval_sale3')){
             $orders = Order::paginate(30);
@@ -63,13 +64,26 @@ class OrdersController extends Controller
 
 	public function edit(Order $order)
 	{
-        $this->authorize('update', $order);
+        $this->authorize('edit', $order);
 		return view('orders.create_and_edit', compact('order'));
 	}
 
 	public function update(OrderRequest $request, Order $order)
 	{
+// 审核和编辑  共用update
+        if($request->input('order_state')=='二次审核'){
+           // 低于36000  不需要第三次审核 直接通过
+            if($order->total_cost<36000){
+               $order->fill($request->all());
+               $order->fill(['order_state'=>'已通过'])->save();
+            }else{
+               $order->update($request->all());
+            }
+              return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
+        }
 		$this->authorize('update', $order);
+
+
         // 如果编辑销售单的支付金额 和定免税款 同时不存在对应的订单详情 那么需要重新计算
         if($order->total_cost==0){
             $order->update($request->all());
@@ -125,7 +139,8 @@ class OrdersController extends Controller
         return $data;
     }
 
-    public function showDetail(OrderRequest $request){
+    public function showDetail(OrderRequest $request,Order $order){
+        $this->authorize('showDetail', $order);
         // with 预加载  解决N+1 问题
            // $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         $order_type=$request->input('order_type');
@@ -157,7 +172,7 @@ class OrdersController extends Controller
     }
 
     public function check(Order $order){
-            $this->authorize('check');
+            $this->authorize('check', $order);
         return view('orders.check', compact('order'));
     }
 }

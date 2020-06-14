@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('remark');
             $table->integer('payment_amount')->unsigned();
             $table->integer('tax_deductible')->unsigned();
-            $table->integer('arrears')->unsigned();
+            $table->integer('arrears');
             $table->string('order_state')->index();
             $table->integer('order_detail_id')->unsigned()->index();
             $table->text('appendix');

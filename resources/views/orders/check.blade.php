@@ -45,7 +45,7 @@
                       @endif
 
                       @if(Auth::user()->name==config('global.approval_sale3'))
-                       <option value="审核通过" {{ $order->order_state == '审核通过' ? 'selected' : '' }}>
+                       <option value="已通过" {{ $order->order_state == '已通过' ? 'selected' : '' }}>
                         审核通过
                       </option>
                       @endif
@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group">
                   <label for="remark-field">备注(不通过请填写备注进行提示！！)</label>
-                  <input class="form-control" type="text" name="remark" id="remark-field" value="" />
+                  <input class="form-control" type="text" name="remark" id="remark-field" value=""  required />
                 </div>
 
           <div class="well well-sm">

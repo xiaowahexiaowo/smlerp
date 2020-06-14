@@ -29,7 +29,13 @@ class OrderPolicy extends Policy
         return $order->user_id == $user->id;
     }
 
-    public function check(User $user){
+    public function check(User $user, Order $order){
+        // 这三人 才可以审核
+        return $user->name==config('global.approval_sale1')||$user->name==config('global.approval_sale2')||$user->name==config('global.approval_sale3');
+    }
+
+    public function showDetail(User $user, Order $order){
+// 这三人 才可以  查看明细
         return $user->name==config('global.approval_sale1')||$user->name==config('global.approval_sale2')||$user->name==config('global.approval_sale3');
     }
 }

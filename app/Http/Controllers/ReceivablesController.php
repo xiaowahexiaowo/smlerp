@@ -11,12 +11,12 @@ class ReceivablesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['show']]);
     }
 
 	public function index(Receivable $receivable)
 	{
-
+$this->authorize('index', $receivable);
         $receivables = Receivable::paginate();
 		return view('receivables.index', compact('receivables'));
 	}

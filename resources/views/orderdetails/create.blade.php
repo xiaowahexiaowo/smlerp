@@ -28,16 +28,16 @@
 
                 <div class="form-group">
                     <label for="generating_unit_no-field">机组编号</label>
-                    <input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value="" />
+                    <input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value=""  required />
                 </div>
                 <div class="form-group">
                     <label for="count-field">出库数量</label>
-                    <input class="form-control" type="text" name="count" id="count-field" value="" />
+                    <input class="form-control" type="text" name="count" id="count-field" value=""  required />
                 </div>
 
                 <div class="form-group">
                 	<label for="remarks-field">备注</label>
-                	<input class="form-control" type="text" name="remarks" id="remarks-field" value="" />
+                	<input class="form-control" type="text" name="remarks" id="remarks-field" value=""  required />
                 </div>
 
 

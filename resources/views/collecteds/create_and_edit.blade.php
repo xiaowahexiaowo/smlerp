@@ -32,32 +32,32 @@
 
                 <div class="form-group">
                 	<label for="order_id-field">订单编号</label>
-                	<input class="form-control" type="text" name="order_id" id="order_id-field" value="{{ old('order_id', $collected->order_id ) }}" />
+                	<input class="form-control" type="text" name="order_id" id="order_id-field" value="{{ old('order_id', $collected->order_id ) }}"  required />
                 </div>
                 <div class="form-group">
                     <label for="collection_date-field">收款日期</label>
-                    <input class="form-control" type="text" name="collection_date" id="collection_date-field" value="{{ old('collection_date', $collected->collection_date ) }}" />
+                    <input class="form-control" type="text" name="collection_date" id="collection_date-field" value="{{ old('collection_date', $collected->collection_date ) }}"  required />
                 </div>
 
                 <div class="form-group">
                     <label for="collected_amount-field">金额</label>
-                    <input class="form-control" type="text" name="collected_amount" id="collected_amount-field" value="{{ old('collected_amount', $collected->collected_amount ) }}" />
+                    <input class="form-control" type="text" name="collected_amount" id="collected_amount-field" value="{{ old('collected_amount', $collected->collected_amount ) }}"  required />
                 </div>
                 <div class="form-group">
                 	<label for="payment_method-field">付款方式</label>
-                	<input class="form-control" type="text" name="payment_method" id="payment_method-field" value="{{ old('payment_method', $collected->payment_method ) }}" />
+                	<input class="form-control" type="text" name="payment_method" id="payment_method-field" value="{{ old('payment_method', $collected->payment_method ) }}"  required />
                 </div>
                 <div class="form-group">
                 	<label for="payee-field">收款人</label>
-                	<input class="form-control" type="text" name="payee" id="payee-field" value="{{ old('payee', $collected->payee ) }}" />
+                	<input class="form-control" type="text" name="payee" id="payee-field" value="{{ old('payee', $collected->payee ) }}"  required />
                 </div>
                 <div class="form-group">
                 	<label for="check_man-field">核对人</label>
-                	<input class="form-control" type="text" name="check_man" id="check_man-field" value="{{ old('check_man', $collected->check_man ) }}" />
+                	<input class="form-control" type="text" name="check_man" id="check_man-field" value="{{ old('check_man', $collected->check_man ) }}"  required />
                 </div>
                 <div class="form-group">
                 	<label for="remark-field">备注</label>
-                	<input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $collected->remark ) }}" />
+                	<input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $collected->remark ) }}"  required />
                 </div>
 
           <div class="well well-sm">

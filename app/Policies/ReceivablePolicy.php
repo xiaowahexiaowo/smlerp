@@ -17,4 +17,10 @@ class ReceivablePolicy extends Policy
     {
         return true;
     }
+
+        public function index(User $user, Receivable $receivable)
+    {
+        // 这三人 才可以  操作收款明细
+        return $user->name==config('global.approval_sale1')||$user->name==config('global.approval_sale2')||$user->name==config('global.approval_sale3');
+    }
 }
