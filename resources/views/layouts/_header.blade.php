@@ -47,7 +47,15 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="">个人中心</a>
             <a class="dropdown-item" href="">编辑资料</a>
+              @can('manage_users')
+                <a class="dropdown-item" href="{{ url(config('administrator.uri')) }}">
+                  <i class="fas fa-tachometer-alt mr-2"></i>
+                  管理后台
+                </a>
+                <div class="dropdown-divider"></div>
+              @endcan
             <div class="dropdown-divider"></div>
+
             <a class="dropdown-item" id="logout" href="#">
                 <form action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
