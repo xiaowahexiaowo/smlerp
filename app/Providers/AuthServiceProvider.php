@@ -13,6 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+		 \App\Models\Instock::class => \App\Policies\InstockPolicy::class,
 		 \App\Models\Stock::class => \App\Policies\StockPolicy::class,
 		 \App\Models\Receivable::class => \App\Policies\ReceivablePolicy::class,
 		 \App\Models\Collected::class => \App\Policies\CollectedPolicy::class,

@@ -35,3 +35,5 @@ Route::resource('collecteds', 'CollectedsController', ['only' => ['index', 'show
 Route::resource('receivables', 'ReceivablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 //
 Route::resource('stocks', 'StocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('instocks', 'InstocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
