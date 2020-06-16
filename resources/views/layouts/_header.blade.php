@@ -17,6 +17,9 @@
       <a class="navbar-brand " href="{{ route('receivables.index') }}">
     应收账款统计
     </a>
+         <a class="navbar-brand " href="{{ route('stocks.index') }}">
+    物品库存统计
+    </a>
 
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
