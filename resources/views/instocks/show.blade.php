@@ -6,43 +6,75 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>Instock / Show #{{ $instock->id }}</h1>
+        <h1>入库单 /  #{{ $instock->id }}</h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('instocks.index') }}"><- Back</a>
+              <a class="btn btn-link" href="{{ route('instocks.index') }}"><- 返回</a>
             </div>
             <div class="col-md-6">
-              <a class="btn btn-sm btn-warning float-right mt-1" href="{{ route('instocks.edit', $instock->id) }}">
-                Edit
-              </a>
+
             </div>
           </div>
         </div>
         <br>
+ <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+                <th class="text-xs-center">入库单号</th>
+                <th>入库类型</th> <th>批次</th> <th>日期</th> <th>供应商</th> <th>入库人</th> <th>收料仓库</th>
 
-        <label>Stock_type</label>
-<p>
-	{{ $instock->stock_type }}
-</p> <label>Batch</label>
-<p>
-	{{ $instock->batch }}
-</p> <label>In_date</label>
-<p>
-	{{ $instock->in_date }}
-</p> <label>Supplier</label>
-<p>
-	{{ $instock->supplier }}
-</p> <label>Stock_man</label>
-<p>
-	{{ $instock->stock_man }}
-</p> <label>Stock_factory</label>
-<p>
-	{{ $instock->stock_factory }}
-</p>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td class="text-xs-center">{{$instock->id}}</td>
+
+                <td>{{$instock->stock_type}}</td> <td>{{$instock->batch}}</td> <td>{{$instock->in_date}}</td> <td>{{$instock->supplier}}</td> <td>{{$instock->stock_man}}</td> <td>{{$instock->stock_factory}}</td>
+
+
+              </tr>
+
+            </tbody>
+          </table>
+ <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+
+                <th>日期</th> <th>入库编号</th> <th>机组编号</th><th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th><th>操作</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+               @foreach($instock->instockdetails as $detail)
+
+              <tr>
+
+                                    <td>{{$detail->in_date}}</td><td>{{$detail->stock_id}}</td><td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_count}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->stock_amount}}</td><td>{{$detail->stock_man}}</td><td>{{$detail->remark}}</td>
+                                     <td  class="text-xs-right">
+                   <form action="{{ route('instockdetails.destroy', $detail->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
+                    {{csrf_field()}}
+                    <input type="hidden" name="_method" value="DELETE">
+
+                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                  </form>
+               </td>
+
+              </tr>
+
+
+                @endforeach
+
+            </tbody>
+          </table>
+
+
       </div>
     </div>
   </div>

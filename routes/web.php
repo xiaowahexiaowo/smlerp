@@ -37,3 +37,11 @@ Route::resource('receivables', 'ReceivablesController', ['only' => ['index', 'sh
 Route::resource('stocks', 'StocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::resource('instocks', 'InstocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('instock_detail/{instocks}','InstocksController@createDetail')->name('instocks.create_detail');
+
+Route::get('instock_detail/{date_begin?}{date_end?}{generating_unit_no?}','InstocksController@showDetail')->name('instocks.instock_detail');
+
+Route::get('exportinstockdetail','InstocksController@export')->name('exports.instockdetails');
+
+Route::resource('instockdetails', 'InstockdetailsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

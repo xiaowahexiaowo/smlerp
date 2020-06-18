@@ -20,7 +20,12 @@
          <a class="navbar-brand " href="{{ route('stocks.index') }}">
     物品库存统计
     </a>
-
+     <a class="navbar-brand " href="{{ route('instocks.index') }}">
+    入库单
+    </a>
+     <a class="navbar-brand " href="{{ route('instocks.instock_detail') }}">
+    入库明细
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

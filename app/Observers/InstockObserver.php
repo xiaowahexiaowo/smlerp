@@ -6,7 +6,7 @@ use App\Models\Instock;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
-
+use Illuminate\Support\Facades\DB;
 class InstockObserver
 {
     public function creating(Instock $instock)
@@ -14,8 +14,7 @@ class InstockObserver
         //
     }
 
-    public function updating(Instock $instock)
-    {
-        //
+      public function deleted(Instock $instock){
+
     }
 }
