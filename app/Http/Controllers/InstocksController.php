@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InstockRequest;
 use App\Exports\InstocksExport;
 use Illuminate\Support\Facades\DB;
+
 class InstocksController extends Controller
 {
     public function __construct()
@@ -54,9 +55,13 @@ class InstocksController extends Controller
 	public function destroy(Instock $instock)
 	{
 		// $this->authorize('destroy', $instock);
-// 删除对应明细
-         DB::table('instockdetails')->where('stock_id', $instock->id)->delete();
-         // 删除明细后  还需要重新计算  吐血
+// 删之前判断有无明细
+          $instockdetail=DB::table('instockdetails')->where('stock_id', $instock->id)->first();
+      if($instockdetail){
+         session()->flash('warning', '入库单有明细时，禁止删除！');
+            return redirect()->route('instocks.index');
+      }
+
 		$instock->delete();
 
 		return redirect()->route('instocks.index')->with('message', 'Deleted successfully.');

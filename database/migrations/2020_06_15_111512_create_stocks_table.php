@@ -9,7 +9,7 @@ class CreateStocksTable extends Migration
 	{
 		Schema::create('stocks', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('generating_unit_no');
+            $table->string('generating_unit_no')->unique();
             $table->string('product_type');
             $table->string('generating_unit_type');
             $table->string('power');
