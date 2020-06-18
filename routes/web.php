@@ -45,3 +45,5 @@ Route::get('instock_detail/{date_begin?}{date_end?}{generating_unit_no?}','Insto
 Route::get('exportinstockdetail','InstocksController@export')->name('exports.instockdetails');
 
 Route::resource('instockdetails', 'InstockdetailsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('outstocks', 'OutstocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
