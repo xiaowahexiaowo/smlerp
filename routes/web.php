@@ -47,3 +47,11 @@ Route::get('exportinstockdetail','InstocksController@export')->name('exports.ins
 Route::resource('instockdetails', 'InstockdetailsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::resource('outstocks', 'OutstocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('outstock_detail/{outstocks}','OutstocksController@createDetail')->name('outstocks.create_detail');
+
+Route::get('outstock_detail/{date_begin?}{date_end?}{generating_unit_no?}','OutstocksController@showDetail')->name('outstocks.outstock_detail');
+
+Route::get('exportoutstockdetail','OutstocksController@export')->name('exports.outstockdetails');
+
+Route::resource('outstockdetails', 'OutstockdetailsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

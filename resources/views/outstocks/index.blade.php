@@ -44,6 +44,10 @@
 
                     <button type="submit" class="btn btn-sm btn-danger">删除 </button>
                   </form>
+
+                   <a class="btn btn-sm btn-success" href="{{ route('outstocks.create_detail', $outstock->id) }}">
+                    添加明细
+                  </a>
                 </td>
               </tr>
               @endforeach
