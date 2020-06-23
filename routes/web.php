@@ -55,3 +55,6 @@ Route::get('outstock_detail/{date_begin?}{date_end?}{generating_unit_no?}','Outs
 Route::get('exportoutstockdetail','OutstocksController@export')->name('exports.outstockdetails');
 
 Route::resource('outstockdetails', 'OutstockdetailsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('blackboards', 'BlackboardsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('schedules', 'SchedulesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

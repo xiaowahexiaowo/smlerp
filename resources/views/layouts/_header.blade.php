@@ -32,7 +32,12 @@
     <a class="navbar-brand " href="{{ route('outstocks.outstock_detail') }}">
     出库明细
     </a>
-
+ <a class="navbar-brand " href="{{ route('blackboards.index') }}">
+    小黑板
+    </a>
+     <a class="navbar-brand " href="{{ route('schedules.index') }}">
+    排产单
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
