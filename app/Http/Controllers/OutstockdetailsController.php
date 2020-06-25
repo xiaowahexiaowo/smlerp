@@ -51,6 +51,6 @@ class OutstockdetailsController extends Controller
 		$this->authorize('destroy', $outstockdetail);
 		$outstockdetail->delete();
 
-		return redirect()->route('outstockdetails.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('outstocks.index')->with('message', 'Deleted successfully.');
 	}
 }
