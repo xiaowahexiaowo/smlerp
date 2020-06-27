@@ -7,7 +7,7 @@
       <div class="card-header">
         <h1>
           应收款统计
-          <a class="btn btn-success float-xs-right" href="{{ route('receivables.create') }}">导出</a>
+          <a class="btn btn-success float-xs-right" href="{{ route('exports.receivablesdetails') }}">导出</a>
         </h1>
       </div>
 
@@ -36,7 +36,7 @@
           </table>
           {!! $receivables->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">Empty!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!</h3>
         @endif
       </div>
     </div>

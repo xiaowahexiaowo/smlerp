@@ -33,6 +33,8 @@ Route::post('upload_image', 'OrdersController@uploadImage')->name('orders.upload
 
 Route::resource('collecteds', 'CollectedsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('receivables', 'ReceivablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('exportreceivablesdetail','ReceivablesController@export')->name('exports.receivablesdetails');
 //
 Route::resource('stocks', 'StocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
