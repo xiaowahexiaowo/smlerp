@@ -76,6 +76,9 @@ class OrdersController extends Controller
            // 低于36000  不需要第三次审核 直接通过
             if($order->total_cost<36000){
                $order->fill($request->all());
+               // 感觉下2行没啥用  但是不写  欠款就bug了
+               $arrears=$order->total_cost-$order->payment_amount-$order->tax_deductible;
+                $order->fill(['arrears'=>$arrears]);
                $order->fill(['order_state'=>'已通过'])->save();
             }else{
                $order->update($request->all());

@@ -30,10 +30,10 @@
 
                 <td class="text-xs-right">
 
-
-                  <a class="btn btn-sm btn-warning" href="{{ route('collecteds.edit', $collected->id) }}">
+               <!-- 暂不提供编辑 -->
+              <!--     <a class="btn btn-sm btn-warning" href="{{ route('collecteds.edit', $collected->id) }}">
                     编辑
-                  </a>
+                  </a> -->
 
                   <form action="{{ route('collecteds.destroy', $collected->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}

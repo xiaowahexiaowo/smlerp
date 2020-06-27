@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CollectedRequest;
 use Illuminate\Support\Facades\DB;
+use Auth;
+use App\Models\User;
 class CollectedsController extends Controller
 {
     public function __construct()
@@ -17,17 +19,33 @@ class CollectedsController extends Controller
 	public function index(Collected $collected)
 	{
         $this->authorize('index',$collected);
-		$collecteds = Collected::paginate();
+        $user=Auth::user();
+         // 财务和管理员查看的是所有
+        if(!$user->hasRole('Flb_saleman')){
+           $collecteds = Collected::paginate(30);
+        }else{
+            $orders=$user->orders()->get();
+
+            $order_ids= array();
+
+            foreach ($orders as  $order) {
+                $order_ids[] = $order->order_id;
+            }
+
+           $collecteds=Collected::whereIn('order_id', $order_ids)->paginate(30);
+        }
+
 		return view('collecteds.index', compact('collecteds'));
 	}
 
-    public function show(Collected $collected)
-    {
-        return view('collecteds.show', compact('collected'));
-    }
+    // public function show(Collected $collected)
+    // {
+    //     return view('collecteds.show', compact('collected'));
+    // }
 
 	public function create(Collected $collected)
 	{
+          $this->authorize('create',$collected);
 		return view('collecteds.create_and_edit', compact('collected'));
 	}
 
@@ -35,13 +53,48 @@ class CollectedsController extends Controller
 	{
 		$collected->fill($request->all());
         $order_id=$request->input('order_id');
-        // 审核通过  订单存在  则创建
+        // 审核通过  订单存在
          $order=DB::table('orders')->where([['order_id',$order_id],['order_state','已通过'],])->first();
-         if($order){
-          $collected->customer_name=$order->customer_name;
+
+       if($order){
+           // 收款记录同个订单的  收款数
+          $collecteds=DB::table('collecteds')->where('order_id',$order_id)->get();
+
+          $received=0;
+          foreach ($collecteds as $collect) {
+            $received+=$collect->collected_amount;
+          }
+           //加上 本次创建的  收款数
+           $received+=$request->input('collected_amount');
+
+          if($order->total_cost-$received<0){
+            return redirect()->route('collecteds.index')->with('message', '订单金额不能大于总金额.');
+          }
+          // 销售单的创建者
+       $user=User::where('id',$order->user_id)->first();
+           // 更新或创建数据   好像是根据主键   生成应收账款统计
+
+          DB::table('receivables')->updateOrInsert(['order_id' => $order->order_id],[
+
+            'customer_name' =>  $order->customer_name,
+            'receivable_amount' => $order->total_cost,
+            'received'=>$received,
+            'remaining_receivables'=>($order->total_cost-$received),
+            'user_name'=>$user->name,
+            'accountant'=>config('global.accountant'),
+            'check_man'=>$collected->check_man,
+            'remark'=>''
+        ]);
+
+            // 生成收款明细
+            $collected->customer_name=$order->customer_name;
            $collected->save();
            return redirect()->route('collecteds.index')->with('message', '创建成功.');
-         }
+
+
+       }
+
+
 
 		return redirect()->route('collecteds.index')->with('message', '创建失败，订单号不存在.或未审核通过！');
 	}
@@ -64,11 +117,12 @@ class CollectedsController extends Controller
 	{
 		$this->authorize('destroy', $collected);
 
-          $collected->delete();
+
+ $collected->delete();
 
                     // 收款记录同个订单的
           $collecteds=DB::table('collecteds')->where('order_id',$collected->order_id)->get();
-            // 小bug 订单明细不存在的时候。删不掉应收款。记录  没啥影响的。
+
           if($collecteds){
             $received=0;
             foreach ($collecteds as $collect) {
@@ -79,7 +133,7 @@ class CollectedsController extends Controller
             'received'=>$received,'remaining_receivables'=>($order->total_cost-$received)
             ]);
           }else{
-              // 订单收款记录不存在 应收款删除对应记录
+              // 订单收款记录不存在 应收款删除对应记录      bug 删除步调  但是没有任何不良影响
               DB::table('receivables')->where('order_id',$collected->order_id)->delete();
           }
 
