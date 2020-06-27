@@ -14,6 +14,8 @@ class OrdersExport implements FromView
 
         public function view(): View
             {
+
+
                  // 获取上一次请求的参数
                $order_type=Request::old('order_type');
         $date_begin=Request::old('date_begin');

@@ -40,19 +40,25 @@
                   </a>
                   @endif
 
-                @if(Auth::user()->name==config('global.approval_sale1')&&$order->order_state=='待审核')
+                @if($order->order_state=='待审核')
+                  @can('1_check')
                   <a class="btn btn-sm btn-warning" href="{{ route('orders.check', $order->id) }}">
                     初步审核
                   </a>
-                 @elseif(Auth::user()->name==config('global.approval_sale2')&&$order->order_state=='初步审核')
+                  @endcan
+                 @elseif($order->order_state=='初步审核')
+                 @can('2_check')
                  <a class="btn btn-sm btn-warning" href="{{ route('orders.check', $order->id) }}">
                     二次审核
                   </a>
-                  @elseif(Auth::user()->name==config('global.approval_sale3')&&$order->order_state=='二次审核')
+                  @endcan
+                  @elseif($order->order_state=='二次审核')
+                  @can('3_check')
                       <a class="btn btn-sm btn-warning" href="{{ route('orders.check', $order->id) }}">
                     最终审核
+                  @endcan
                   @endif
-                 @if($order->order_state=='已通过')
+                 @if($order->order_state=='不通过'||$order->order_state=='待审核')
                   <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">

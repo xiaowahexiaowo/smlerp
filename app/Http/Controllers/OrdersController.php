@@ -17,23 +17,24 @@ class OrdersController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Order $orders)
 	{
+        $this->authorize('index', $orders);
         $user=Auth::user();
         $name=$user->name;
 
-         // 有审核权限的人 可以查看所有数据
-        if($name==config('global.approval_sale1')||$name==config('global.approval_sale2')||$name==config('global.approval_sale3')){
-            $orders = Order::paginate(30);
+        // 财务和管理员查看的是所有
+        if(!$user->hasRole('Flb_saleman')){
+           $orders = Order::paginate(30);
         }else{
-          $orders=Order::where('user_id',$user->id)->paginate(30);
+           $orders=Order::where('user_id',$user->id)->paginate(30);
         }
-
 		return view('orders.index', compact('orders'));
 	}
 
     public function show(Order $order)
     {
+       $this->authorize('show', $order);
         return view('orders.show', compact('order'));
     }
 
@@ -81,7 +82,7 @@ class OrdersController extends Controller
             }
               return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
         }
-		$this->authorize('update', $order);
+
 
 
         // 如果编辑销售单的支付金额 和定免税款 同时不存在对应的订单详情 那么需要重新计算
@@ -101,9 +102,7 @@ class OrdersController extends Controller
 
         }
          return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
-        // if((!$request->input('payment_amount'))||(!$request->input('tax_deductible'))){
-        //     $arrears=$order->total_cost-$request->input('payment_amount')-$request->input('tax_deductible');
-        // }
+
 
 	}
 
@@ -143,6 +142,12 @@ class OrdersController extends Controller
         $this->authorize('showDetail', $order);
         // with 预加载  解决N+1 问题
            // $orders = Order::with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+        // $user=Auth::user();
+        // if($user->hasRole('Flb_saleman')){
+        //      $orders = Order::where('user_id',$user->id)->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
+        //      return view('orders.order_detail', compact('orders'));
+        // }
+
         $order_type=$request->input('order_type');
         $date_begin=$request->input('date_begin');
         $date_end=$request->input('date_end');
@@ -160,14 +165,13 @@ class OrdersController extends Controller
             $orders = Order::where('order_state','!=','待审核')->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         }
 
-           // 审核通过的  再显示到销售明细单里？
+
         return view('orders.order_detail', compact('orders'));
     }
 
      public function export()
     {
-        // return (new InvoicesExport)->forYear(2018)->download('invoices.xlsx');
-        // return Excel::download(new OrdersExport, '销售明细单.xlsx');
+
          return (new OrdersExport)->download('销售明细单.xlsx');
     }
 

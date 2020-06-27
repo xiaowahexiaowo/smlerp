@@ -15,8 +15,9 @@ class Policy
 
     public function before($user, $ability)
 	{
-	    // if ($user->isSuperAdmin()) {
-	    // 		return true;
-	    // }
+        // 所有的策略~  只要是管理员  直接授权通过
+	  if ($user->can('manage_users')) {
+            return true;
+        }
 	}
 }

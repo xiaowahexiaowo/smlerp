@@ -29,9 +29,43 @@ class UsersTableSeeder extends Seeder
         $user->email = '982726736@qq.com';
         $user->save();
 
+         // 单独处理第2个用户的数据
+        $user = User::find(2);
+        $user->name = '王丽华';
+        $user->email = 'wlh@qq.com';
+        $user->save();
+
+         // 单独处理第3个用户的数据
+        $user = User::find(3);
+        $user->name = '岳麟凤';
+        $user->email = 'ylf@qq.com';
+        $user->save();
+
+          // 单独处理第4个用户的数据
+        $user = User::find(4);
+        $user->name = '殷爱军';
+        $user->email = 'yaj@qq.com';
+        $user->save();
+
+
+
          // 将 1 号用户指派为『管理员』
         $user = User::find(1);
         $user->assignRole('Maintainer');
+
+// 分别设置3级审核权限
+          $user = User::find(2);
+        $user->assignRole('Checkman1');
+$user->assignRole('Treasurer');
+
+          $user = User::find(3);
+        $user->assignRole('Checkman2');
+$user->assignRole('Treasurer');
+
+          $user = User::find(4);
+        $user->assignRole('Checkman3');
+        $user->assignRole('Maintainer');
+
 
     }
 }

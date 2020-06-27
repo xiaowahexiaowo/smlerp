@@ -68,6 +68,10 @@ class SeedRolesAndPermissionsData extends Migration
         Permission::create(['name' => 'r_schedules']);
         Permission::create(['name' => 'u_schedules']);
         Permission::create(['name' => 'd_schedules']);
+        // 3级审核权限
+        Permission::create(['name' => '1_check']);
+        Permission::create(['name' => '2_check']);
+        Permission::create(['name' => '3_check']);
 
         // 创建管理员角色，并赋予权限
         $maintainer = Role::create(['name' => 'Maintainer']);
@@ -79,13 +83,13 @@ class SeedRolesAndPermissionsData extends Migration
         $flb_saleman->givePermissionTo('r_orders');
         $flb_saleman->givePermissionTo('u_orders');
         $flb_saleman->givePermissionTo('c_orderdetails');
-        $flb_saleman->givePermissionTo('r_orderdetails');
+        // $flb_saleman->givePermissionTo('r_orderdetails');
         $flb_saleman->givePermissionTo('u_orderdetails');
         $flb_saleman->givePermissionTo('r_receivables');
         $flb_saleman->givePermissionTo('r_collecteds');
         $flb_saleman->givePermissionTo('r_stocks');
         $flb_saleman->givePermissionTo('r_instocks');
-        $flb_saleman->givePermissionTo('r_stockdetails');
+        $flb_saleman->givePermissionTo('r_instockdetails');
         $flb_saleman->givePermissionTo('r_outstocks');
         $flb_saleman->givePermissionTo('r_outstockdetails');
         $flb_saleman->givePermissionTo('r_blackboards');
@@ -146,6 +150,15 @@ class SeedRolesAndPermissionsData extends Migration
            $blackboardman->givePermissionTo('r_schedules');
            $blackboardman->givePermissionTo('u_schedules');
            $blackboardman->givePermissionTo('d_schedules');
+
+           // 审核员   直接把权限给对应的人  人事变动不方便
+           $checkman1 = Role::create(['name' => 'Checkman1']);
+           $checkman1->givePermissionTo('1_check');
+           $checkman2 = Role::create(['name' => 'Checkman2']);
+           $checkman2->givePermissionTo('2_check');
+           $checkman3 = Role::create(['name' => 'Checkman3']);
+           $checkman3->givePermissionTo('3_check');
+
 
 
     }

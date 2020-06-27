@@ -64,12 +64,14 @@
                <td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->count}}</td><td>{{$detail->amount}}</td><td>{{$detail->remarks}}</td>
 
                <td  class="text-xs-right">
+                 @if($order->order_state=='待审核'||$order->order_state=='不通过')
                    <form action="{{ route('orderdetails.destroy', $detail->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
                     <button type="submit" class="btn btn-sm btn-danger">删除 </button>
                   </form>
+                  @endif
                </td>
               </tr>
               @endforeach

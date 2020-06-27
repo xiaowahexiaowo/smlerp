@@ -7,13 +7,13 @@ class BlackboardsTableSeeder extends Seeder
 {
     public function run()
     {
-        $blackboards = factory(Blackboard::class)->times(50)->make()->each(function ($blackboard, $index) {
-            if ($index == 0) {
-                // $blackboard->field = 'value';
-            }
-        });
+        // $blackboards = factory(Blackboard::class)->times(50)->make()->each(function ($blackboard, $index) {
+        //     if ($index == 0) {
+        //         // $blackboard->field = 'value';
+        //     }
+        // });
 
-        Blackboard::insert($blackboards->toArray());
+        // Blackboard::insert($blackboards->toArray());
     }
 
 }

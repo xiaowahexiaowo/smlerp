@@ -7,13 +7,13 @@ class CollectedsTableSeeder extends Seeder
 {
     public function run()
     {
-        $collecteds = factory(Collected::class)->times(50)->make()->each(function ($collected, $index) {
-            if ($index == 0) {
-                // $collected->field = 'value';
-            }
-        });
+        // $collecteds = factory(Collected::class)->times(50)->make()->each(function ($collected, $index) {
+        //     if ($index == 0) {
+        //         // $collected->field = 'value';
+        //     }
+        // });
 
-        Collected::insert($collecteds->toArray());
+        // Collected::insert($collecteds->toArray());
     }
 
 }
