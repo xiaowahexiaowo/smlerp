@@ -15,6 +15,6 @@ class OutstockdetailPolicy extends Policy
 
     public function destroy(User $user, Outstockdetail $outstockdetail)
     {
-        return true;
+        return $user->hasRole('Storekeeper');
     }
 }

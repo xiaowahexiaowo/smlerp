@@ -51,8 +51,12 @@ class InstockdetailsController extends Controller
 
 	public function destroy(Instockdetail $instockdetail)
 	{
-		// $this->authorize('destroy', $instockdetail);
-
+		$this->authorize('destroy', $instockdetail);
+ $stock=DB::table('stocks')->where('generating_unit_no',$instockdetail->generating_unit_no)->first();
+    if($stock->inventory_quantity-$instockdetail->warehousing_count<0){
+session()->flash('warning', '库存不足无法删除该入库明细！');
+            return redirect()->route('instocks.index');
+        }
 
 		$instockdetail->delete();
 

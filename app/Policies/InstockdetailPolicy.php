@@ -15,6 +15,6 @@ class InstockdetailPolicy extends Policy
 
     public function destroy(User $user, Instockdetail $instockdetail)
     {
-        return true;
+       return $user->hasRole('Storekeeper');
     }
 }

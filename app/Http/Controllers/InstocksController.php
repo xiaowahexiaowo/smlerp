@@ -24,11 +24,13 @@ class InstocksController extends Controller
 
     public function show(Instock $instock)
     {
+        $this->authorize('show', $instock);
         return view('instocks.show', compact('instock'));
     }
 
 	public function create(Instock $instock)
 	{
+        $this->authorize('create', $instock);
 		return view('instocks.create_and_edit', compact('instock'));
 	}
 
@@ -54,7 +56,7 @@ class InstocksController extends Controller
 
 	public function destroy(Instock $instock)
 	{
-		// $this->authorize('destroy', $instock);
+		 $this->authorize('destroy', $instock);
 // 删之前判断有无明细
           $instockdetail=DB::table('instockdetails')->where('stock_id', $instock->id)->first();
       if($instockdetail){
@@ -70,7 +72,7 @@ class InstocksController extends Controller
     // 什么鬼   约定 是$instocks  才可以把值传过去   定义成单数  传不过去。。。
         public function createDetail(Instock $instocks)
     {
-        // $this->authorize('createDetail', $instock);
+         $this->authorize('createDetail', $instocks);
         return view('instockdetails.create', compact('instocks'));
     }
 
@@ -95,6 +97,7 @@ class InstocksController extends Controller
 
        public function export()
     {
+        $this->authorize('export', $instock);
         // return (new InvoicesExport)->forYear(2018)->download('invoices.xlsx');
         // return Excel::download(new OrdersExport, '销售明细单.xlsx');
          return (new InstocksExport)->download('入库明细.xlsx');

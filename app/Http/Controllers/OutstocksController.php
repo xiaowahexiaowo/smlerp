@@ -15,19 +15,22 @@ class OutstocksController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Outstock $outstock)
 	{
+        $this->authorize('index', $outstock);
 		$outstocks = Outstock::paginate();
 		return view('outstocks.index', compact('outstocks'));
 	}
 
     public function show(Outstock $outstock)
     {
+         $this->authorize('index', $outstock);
         return view('outstocks.show', compact('outstock'));
     }
 
 	public function create(Outstock $outstock)
 	{
+        $this->authorize('create', $outstock);
 		return view('outstocks.create_and_edit', compact('outstock'));
 	}
 
@@ -64,11 +67,11 @@ class OutstocksController extends Controller
 
 	public function destroy(Outstock $outstock)
 	{
-		// $this->authorize('destroy', $outstock);
+		 $this->authorize('destroy', $outstock);
                   $outstockdetail=DB::table('outstockdetails')->where('stock_id', $outstock->id)->first();
        // 出库有明细  不允许删除
       if($outstockdetail){
-         session()->flash('warning', '入库单有明细时，禁止删除！');
+         session()->flash('warning', '出库单有明细时，禁止删除！');
             return redirect()->route('outstocks.index');
       }
 		$outstock->delete();
@@ -78,12 +81,12 @@ class OutstocksController extends Controller
 
     public function createDetail(Outstock $outstocks)
     {
-
+        $this->authorize('createDetail', $outstocks);
         return view('outstockdetails.create', compact('outstocks'));
     }
 
         public function showDetail(OutstockRequest $request, Outstock $outstock){
-
+$this->authorize('showDetail', $outstock);
   // 按日期查询
 
         $date_begin=$request->input('date_begin');
@@ -103,6 +106,7 @@ class OutstocksController extends Controller
 
      public function export()
     {
+        $this->authorize('export', $outstock);
 
          return (new OutstocksExport)->download('出库明细.xlsx');
     }

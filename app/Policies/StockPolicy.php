@@ -15,6 +15,11 @@ class StockPolicy extends Policy
 
     public function destroy(User $user, Stock $stock)
     {
-        return true;
+        return $user->hasRole('Storekeeper');
+    }
+     public function create(User $user, Stock $stock)
+    {
+        return $user->hasRole('Storekeeper');
     }
 }
+

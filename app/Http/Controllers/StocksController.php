@@ -13,10 +13,10 @@ class StocksController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-
+    // 都有查看权限
 	public function index()
 	{
-		$stocks = Stock::paginate();
+		$stocks = Stock::paginate(30);
 		return view('stocks.index', compact('stocks'));
 	}
 
@@ -27,6 +27,7 @@ class StocksController extends Controller
 
 	public function create(Stock $stock)
 	{
+        $this->authorize('create', $stock);
 		return view('stocks.create_and_edit', compact('stock'));
 	}
 
@@ -74,6 +75,15 @@ class StocksController extends Controller
 	public function destroy(Stock $stock)
 	{
 		$this->authorize('destroy', $stock);
+
+        // 删除之前  判断下该机组有无出入库明细  若有 则不能删除
+$instockdetail=DB::table('instockdetails')->where('generating_unit_no', $stock->generating_unit_no)->first();
+$outstockdetail=DB::table('outstockdetails')->where('generating_unit_no', $stock->generating_unit_no)->first();
+if($instockdetail||$outstockdetail){
+   session()->flash('warning', '出入库单有该机组明细时，禁止删除！');
+            return redirect()->route('stocks.index');
+}
+
 		$stock->delete();
 
 		return redirect()->route('stocks.index')->with('message', 'Deleted successfully.');

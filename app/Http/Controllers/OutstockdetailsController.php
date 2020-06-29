@@ -31,6 +31,10 @@ class OutstockdetailsController extends Controller
             session()->flash('warning', '物品库存中不存在该机组编号，请先录入物品库存中！');
             return redirect()->route('outstocks.index');
         }
+         if($stock->inventory_quantity-$detail->out_count<0){
+session()->flash('warning', '库存不足无法出库！');
+            return redirect()->route('outstocks.index');
+        }
         $detail->product_type=$set->product_type;
         $detail->generating_unit_type=$set->generating_unit_type;
         $detail->power=$set->power;
