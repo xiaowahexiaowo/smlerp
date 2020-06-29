@@ -7,7 +7,7 @@
     <a class="navbar-brand " href="{{ url('/orders') }}">
     销售单
     </a>
-  <!--   <a class="navbar-brand " href="{{ url('/orders/showDetail') }}"> -->
+
     <a class="navbar-brand " href="{{ route('orders.order_detail') }}">
     销售单明细
     </a>
@@ -61,8 +61,7 @@
             {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="">个人中心</a>
-            <a class="dropdown-item" href="">编辑资料</a>
+
               @can('manage_users')
                 <a class="dropdown-item" href="{{ url(config('administrator.uri')) }}">
                   <i class="fas fa-tachometer-alt mr-2"></i>

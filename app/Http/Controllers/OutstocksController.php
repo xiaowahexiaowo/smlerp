@@ -48,7 +48,8 @@ class OutstocksController extends Controller
 
         $outstock->user_name=$order->user->name;
         $outstock->save();
-		return redirect()->route('outstocks.show', $outstock->id)->with('message', 'Created successfully.');
+         session()->flash('success', '出库单创建成功！');
+		return redirect()->route('outstocks.show', $outstock->id);
 	}
 
 	public function edit(Outstock $outstock)
@@ -61,8 +62,8 @@ class OutstocksController extends Controller
 	{
 		$this->authorize('update', $outstock);
 		$outstock->update($request->all());
-
-		return redirect()->route('outstocks.show', $outstock->id)->with('message', 'Updated successfully.');
+ session()->flash('success', '出库单更新成功！');
+		return redirect()->route('outstocks.show', $outstock->id);
 	}
 
 	public function destroy(Outstock $outstock)
@@ -75,8 +76,8 @@ class OutstocksController extends Controller
             return redirect()->route('outstocks.index');
       }
 		$outstock->delete();
-
-		return redirect()->route('outstocks.index')->with('message', 'Deleted successfully.');
+ session()->flash('success', '出库单删除成功！');
+		return redirect()->route('outstocks.index');
 	}
 
     public function createDetail(Outstock $outstocks)

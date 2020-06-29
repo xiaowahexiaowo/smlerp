@@ -45,8 +45,8 @@ session()->flash('warning', '库存不足无法出库！');
         //金额
         $detail->amount=($request->input('out_count'))*($set->warehousing_price);
         $detail->save();
-
-		return redirect()->route('outstocks.index')->with('message', 'Created successfully.');
+ session()->flash('success', '出库单明细创建成功！');
+		return redirect()->route('outstocks.index');
 	}
 
 
@@ -54,7 +54,7 @@ session()->flash('warning', '库存不足无法出库！');
 	{
 		$this->authorize('destroy', $outstockdetail);
 		$outstockdetail->delete();
-
-		return redirect()->route('outstocks.index')->with('message', 'Deleted successfully.');
+ session()->flash('success', '出库单明细删除成功！');
+		return redirect()->route('outstocks.index');
 	}
 }

@@ -36,7 +36,8 @@ class SchedulesController extends Controller
 	public function store(ScheduleRequest $request)
 	{
 		$schedule = Schedule::create($request->all());
-		return redirect()->route('schedules.show', $schedule->id)->with('message', 'Created successfully.');
+        session()->flash('success', '排产单创建成功！');
+		return redirect()->route('schedules.show', $schedule->id);
 	}
 
 	public function edit(Schedule $schedule)
@@ -49,15 +50,15 @@ class SchedulesController extends Controller
 	{
 		$this->authorize('update', $schedule);
 		$schedule->update($request->all());
-
-		return redirect()->route('schedules.show', $schedule->id)->with('message', 'Updated successfully.');
+session()->flash('success', '排产单更新成功！');
+		return redirect()->route('schedules.show', $schedule->id);
 	}
 
 	public function destroy(Schedule $schedule)
 	{
 		$this->authorize('destroy', $schedule);
 		$schedule->delete();
-
-		return redirect()->route('schedules.index')->with('message', 'Deleted successfully.');
+session()->flash('success', '排产单删除成功！');
+		return redirect()->route('schedules.index');
 	}
 }

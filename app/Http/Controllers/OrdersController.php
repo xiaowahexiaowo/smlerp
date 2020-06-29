@@ -60,7 +60,8 @@ class OrdersController extends Controller
         $order->arrears=0;
         //尚欠金额=订单总金额-支付金额-2307可抵免税款     因为创建订单时，订单详情还没填写，所以尚欠金额创建时设为0 当订单详情填写后动态更改尚欠金额。  会有很多bug 如之后更改金额
         $order->save();
-		return redirect()->route('orders.show', $order->id)->with('message', 'Created successfully.');
+        session()->flash('success', '创建成功');
+		return redirect()->route('orders.show', $order->id);
 	}
 
 	public function edit(Order $order)
@@ -83,7 +84,8 @@ class OrdersController extends Controller
             }else{
                $order->update($request->all());
             }
-              return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
+              session()->flash('success', '审核成功！');
+              return redirect()->route('orders.show', $order->id);
         }
 
 
@@ -104,7 +106,8 @@ class OrdersController extends Controller
             $order->fill(['arrears'=>$arrears])->save();
 
         }
-         return redirect()->route('orders.show', $order->id)->with('message', 'Updated successfully.');
+        session()->flash('success', '修改成功！');
+         return redirect()->route('orders.show', $order->id);
 
 
 	}
@@ -115,8 +118,8 @@ class OrdersController extends Controller
 		$this->authorize('destroy', $order);
 		$order->delete();
 
-
-		return redirect()->route('orders.index')->with('message', 'Deleted successfully.');
+session()->flash('success', '删除成功');
+		return redirect()->route('orders.index');
 	}
 
       public function uploadImage(Request $request, ImageUploadHandler $uploader)

@@ -37,7 +37,8 @@ if(!$set){
         //出库数量*入库单价=金额
         $detail->amount=($request->input('count'))*($set->warehousing_price);
         $detail->save();
-        return redirect()->route('orders.index')->with('message', '订单详情创建成功！');
+        session()->flash('success', '订单详情创建成功！');
+        return redirect()->route('orders.index');
     }
 
         public function destroy(Orderdetail $orderdetail)
@@ -45,7 +46,7 @@ if(!$set){
 
         // 接收参数必须设置为$orderdetail  真坑
         $orderdetail->delete();
-
-        return redirect()->route('orders.index')->with('message', 'Deleted successfully.');
+        session()->flash('success', '删除成功');
+        return redirect()->route('orders.index');
     }
 }

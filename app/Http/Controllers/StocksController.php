@@ -55,7 +55,8 @@ class StocksController extends Controller
         //库存数量*入库单价=金额
         $stock->stock_amount=($stock->inventory_quantity)*($set->warehousing_price);
         $stock->save();
-		return redirect()->route('stocks.index', $stock->id)->with('message', 'Created successfully.');
+        session()->flash('success', '创建成功！');
+		return redirect()->route('stocks.index', $stock->id);
 	}
 
 	public function edit(Stock $stock)
@@ -68,8 +69,8 @@ class StocksController extends Controller
 	{
 		$this->authorize('update', $stock);
 		$stock->update($request->all());
-
-		return redirect()->route('stocks.show', $stock->id)->with('message', 'Updated successfully.');
+        session()->flash('success', '更新成功！');
+		return redirect()->route('stocks.show', $stock->id);
 	}
 
 	public function destroy(Stock $stock)
@@ -85,7 +86,7 @@ if($instockdetail||$outstockdetail){
 }
 
 		$stock->delete();
-
-		return redirect()->route('stocks.index')->with('message', 'Deleted successfully.');
+        session()->flash('success', '删除成功！');
+		return redirect()->route('stocks.index');
 	}
 }

@@ -68,7 +68,8 @@ class CollectedsController extends Controller
            $received+=$request->input('collected_amount');
 
           if($order->total_cost-$received<0){
-            return redirect()->route('collecteds.index')->with('message', '订单金额不能大于总金额.');
+             session()->flash('warning', '收款金额不能大于订单金额');
+            return redirect()->route('collecteds.index');
           }
           // 销售单的创建者
        $user=User::where('id',$order->user_id)->first();
@@ -89,14 +90,15 @@ class CollectedsController extends Controller
             // 生成收款明细
             $collected->customer_name=$order->customer_name;
            $collected->save();
-           return redirect()->route('collecteds.index')->with('message', '创建成功.');
+            session()->flash('success', '收款明细创建成功！');
+           return redirect()->route('collecteds.index');
 
 
        }
 
 
-
-		return redirect()->route('collecteds.index')->with('message', '创建失败，订单号不存在.或未审核通过！');
+ session()->flash('warning', '创建失败，订单号不存在.或暂未审核通过！！');
+		return redirect()->route('collecteds.index');
 	}
 
 	public function edit(Collected $collected)
@@ -109,8 +111,8 @@ class CollectedsController extends Controller
 	{
 		$this->authorize('update', $collected);
 		$collected->update($request->all());
-
-		return redirect()->route('collecteds.show', $collected->id)->with('message', 'Updated successfully.');
+session()->flash('success', '收款明细更新成功！');
+		return redirect()->route('collecteds.show', $collected->id);
 	}
 
 	public function destroy(Collected $collected)
@@ -138,9 +140,9 @@ class CollectedsController extends Controller
           }
 
 
+session()->flash('success', '收款明细删除成功！');
 
-
-		return redirect()->route('collecteds.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('collecteds.index');
 	}
 }
 

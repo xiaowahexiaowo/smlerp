@@ -36,7 +36,8 @@ class BlackboardsController extends Controller
 	public function store(BlackboardRequest $request)
 	{
 		$blackboard = Blackboard::create($request->all());
-		return redirect()->route('blackboards.index')->with('message', 'Created successfully.');
+        session()->flash('success', '小黑板创建成功！');
+		return redirect()->route('blackboards.index');
 	}
 
 	public function edit(Blackboard $blackboard)
@@ -50,15 +51,15 @@ class BlackboardsController extends Controller
 	{
 		$this->authorize('update', $blackboard);
 		$blackboard->update($request->all());
-
-		return redirect()->route('blackboards.show', $blackboard->id)->with('message', 'Updated successfully.');
+session()->flash('success', '小黑板更新成功！');
+		return redirect()->route('blackboards.show', $blackboard->id);
 	}
 
 	public function destroy(Blackboard $blackboard)
 	{
 		$this->authorize('destroy', $blackboard);
 		$blackboard->delete();
-
-		return redirect()->route('blackboards.index')->with('message', 'Deleted successfully.');
+session()->flash('success', '小黑板删除成功！');
+		return redirect()->route('blackboards.index');
 	}
 }

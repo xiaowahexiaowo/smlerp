@@ -37,7 +37,8 @@ class InstocksController extends Controller
 	public function store(InstockRequest $request)
 	{
 		$instock = Instock::create($request->all());
-		return redirect()->route('instocks.show', $instock->id)->with('message', 'Created successfully.');
+        session()->flash('success', '入库单创建成功！');
+		return redirect()->route('instocks.show', $instock->id);
 	}
 
 	public function edit(Instock $instock)
@@ -50,8 +51,8 @@ class InstocksController extends Controller
 	{
 		$this->authorize('update', $instock);
 		$instock->update($request->all());
-
-		return redirect()->route('instocks.show', $instock->id)->with('message', 'Updated successfully.');
+ session()->flash('success', '入库单更新成功！');
+		return redirect()->route('instocks.show', $instock->id);
 	}
 
 	public function destroy(Instock $instock)
@@ -65,8 +66,8 @@ class InstocksController extends Controller
       }
 
 		$instock->delete();
-
-		return redirect()->route('instocks.index')->with('message', 'Deleted successfully.');
+ session()->flash('success', '入库单删除成功！');
+		return redirect()->route('instocks.index');
 	}
 
     // 什么鬼   约定 是$instocks  才可以把值传过去   定义成单数  传不过去。。。

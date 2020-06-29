@@ -41,8 +41,8 @@ class InstockdetailsController extends Controller
         //出库数量*入库单价=金额
         $detail->stock_amount=($request->input('warehousing_count'))*($set->warehousing_price);
         $detail->save();
-
-        return redirect()->route('instocks.index')->with('message', '入库明细创建成功！');
+ session()->flash('success', '入库单明细创建成功！');
+        return redirect()->route('instocks.index');
 
 
 	}
@@ -59,7 +59,7 @@ session()->flash('warning', '库存不足无法删除该入库明细！');
         }
 
 		$instockdetail->delete();
-
-		return redirect()->route('instocks.index')->with('message', 'Deleted successfully.');
+ session()->flash('success', '入库单明细删除成功！');
+		return redirect()->route('instocks.index');
 	}
 }
