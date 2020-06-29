@@ -14,19 +14,22 @@ class BlackboardsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Blackboard $blackboard)
 	{
-		$blackboards = Blackboard::paginate();
+        $this->authorize('index', $blackboard);
+		$blackboards = Blackboard::paginate(30);
 		return view('blackboards.index', compact('blackboards'));
 	}
 
     public function show(Blackboard $blackboard)
     {
+        $this->authorize('index', $blackboard);
         return view('blackboards.show', compact('blackboard'));
     }
 
 	public function create(Blackboard $blackboard)
 	{
+        $this->authorize('create', $blackboard);
 		return view('blackboards.create_and_edit', compact('blackboard'));
 	}
 
@@ -38,6 +41,7 @@ class BlackboardsController extends Controller
 
 	public function edit(Blackboard $blackboard)
 	{
+
         $this->authorize('update', $blackboard);
 		return view('blackboards.create_and_edit', compact('blackboard'));
 	}

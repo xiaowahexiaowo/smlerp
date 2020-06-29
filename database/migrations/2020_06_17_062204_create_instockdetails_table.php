@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstockdetailsTable extends Migration 
+class CreateInstockdetailsTable extends Migration
 {
 	public function up()
 	{
@@ -18,8 +18,8 @@ class CreateInstockdetailsTable extends Migration
             $table->integer('phases_number');
             $table->string('unit');
             $table->integer('warehousing_count')->unsigned();
-            $table->integer('warehousing_price')->unsigned();
-            $table->integer('stock_amount')->unsigned();
+            $table->float('warehousing_price',8,2);
+            $table->float('stock_amount',8,2);
             $table->string('stock_man');
             $table->string('remark');
             $table->timestamps();

@@ -14,19 +14,22 @@ class SchedulesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Schedule $schedule)
 	{
+        $this->authorize('index', $schedule);
 		$schedules = Schedule::paginate();
 		return view('schedules.index', compact('schedules'));
 	}
 
     public function show(Schedule $schedule)
     {
+        $this->authorize('index', $schedule);
         return view('schedules.show', compact('schedule'));
     }
 
 	public function create(Schedule $schedule)
 	{
+        $this->authorize('create', $schedule);
 		return view('schedules.create_and_edit', compact('schedule'));
 	}
 

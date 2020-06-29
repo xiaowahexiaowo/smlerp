@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReceivablesTable extends Migration 
+class CreateReceivablesTable extends Migration
 {
 	public function up()
 	{
@@ -11,9 +11,9 @@ class CreateReceivablesTable extends Migration
             $table->increments('id');
             $table->string('order_id');
             $table->string('customer_name');
-            $table->integer('receivable_amount')->unsigned();
-            $table->integer('received')->unsigned();
-            $table->integer('remaining_receivables')->unsigned();
+            $table->float('receivable_amount',8,2);
+            $table->float('received',8,2);
+            $table->float('remaining_receivables',8,2);
             $table->string('user_name');
             $table->string('accountant');
             $table->string('check_man');

@@ -9,12 +9,23 @@ class SchedulePolicy extends Policy
 {
     public function update(User $user, Schedule $schedule)
     {
-        // return $schedule->user_id == $user->id;
-        return true;
+
+        return $user->can('u_schedules');
     }
 
     public function destroy(User $user, Schedule $schedule)
     {
-        return true;
+        return $user->can('d_schedules');
     }
+
+        public function create(User $user, Schedule $schedule)
+    {
+        return $user->can('c_schedules');
+    }
+
+        public function index(User $user, Schedule $schedule)
+    {
+        return $user->can('r_schedules');
+    }
+
 }

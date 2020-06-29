@@ -23,7 +23,7 @@ class CreateSettingTable extends Migration
             $table->string('power');
             $table->integer('phases_number');
             $table->string('unit');
-            $table->integer('warehousing_price');
+            $table->float('warehousing_price',8,2);
         });
     }
 

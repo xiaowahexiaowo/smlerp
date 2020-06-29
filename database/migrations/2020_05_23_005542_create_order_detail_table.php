@@ -22,9 +22,9 @@ class CreateOrderDetailTable extends Migration
             $table->string('power');
             $table->integer('phases_number');
             $table->string('unit');
-            $table->integer('warehousing_price');
+            $table->float('warehousing_price',8,2);
              $table->integer('count');
-              $table->integer('amount');
+              $table->float('amount',8,2);
               $table->string('remarks');
               $table->string('order_id');
         });
