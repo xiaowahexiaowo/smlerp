@@ -8,9 +8,9 @@
 
       <div class="card-header">
         <h1>
-          出库明细/
+          出库明细/out stock detail
 
-         创建
+         创建 create
 
         </h1>
       </div>
@@ -30,24 +30,24 @@
 
 
                 <div class="form-group">
-                	<label for="generating_unit_no-field">机组编号</label>
+                	<label for="generating_unit_no-field">机组编号generating_unit_no</label>
                 	<input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value="" />
                 </div>
 
                 <div class="form-group">
-                    <label for="out_count-field">出库数量</label>
+                    <label for="out_count-field">出库数量out_count</label>
                     <input class="form-control" type="text" name="out_count" id="out_count-field" value="" />
                 </div>
 
 
                 <div class="form-group">
-                	<label for="remark-field">备注</label>
+                	<label for="remark-field">备注remark</label>
                 	<input class="form-control" type="text" name="remark" id="remark-field" value="" />
                 </div>
 
           <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">保存</button>
-            <a class="btn btn-link float-xs-right" href="{{ route('outstocks.index') }}"> <- 返回</a>
+            <button type="submit" class="btn btn-primary">保存save</button>
+            <a class="btn btn-link float-xs-right" href="{{ route('outstocks.index') }}"> <- 返回back</a>
           </div>
         </form>
       </div>

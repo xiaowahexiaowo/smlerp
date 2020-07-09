@@ -6,8 +6,8 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          物品库存统计
-          <a class="btn btn-success float-xs-right" href="{{ route('stocks.create') }}">创建</a>
+          物品库存统计 goods stock count
+          <a class="btn btn-success float-xs-right" href="{{ route('stocks.create') }}">创建create</a>
         </h1>
       </div>
 
@@ -19,6 +19,11 @@
 
                 <th>机组编号</th> <th>产品类型</th> <th>机组类型</th> <th>功率</th> <th>相数</th> <th>单位</th> <th>初期库存</th> <th>入库数量</th> <th>出库数量</th> <th>库存数量</th> <th>库存单价</th> <th>库存金额</th> <th>备注说明</th>
                 <th class="text-xs-right">操作</th>
+              </tr>
+                   <tr>
+
+                <th>generating_unit_no</th> <th>product_type</th> <th>generating_unit_type</th> <th>power</th> <th>phases_number</th> <th>unit</th> <th>init_stock</th> <th>warehousing_count</th> <th>out_count</th> <th>库inventory_quantity</th> <th></th> <th>warehousing_price</th> <th>remark</th>
+                <th class="text-xs-right">option</th>
               </tr>
             </thead>
 
@@ -38,7 +43,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除 delete</button>
                   </form>
                 </td>
               </tr>
@@ -47,7 +52,7 @@
           </table>
           {!! $stocks->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty!</h3>
         @endif
       </div>
     </div>

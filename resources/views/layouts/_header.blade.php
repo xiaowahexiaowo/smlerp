@@ -7,11 +7,10 @@
     <a class="navbar-brand " href="{{ url('/orders') }}">
     销售单
     </a>
-
     <a class="navbar-brand " href="{{ route('orders.order_detail') }}">
     销售单明细
     </a>
-  <a class="navbar-brand " href="{{ route('collecteds.index') }}">
+    <a class="navbar-brand " href="{{ route('collecteds.index') }}">
     收款明细
     </a>
       <a class="navbar-brand " href="{{ route('receivables.index') }}">
@@ -32,7 +31,7 @@
     <a class="navbar-brand " href="{{ route('outstocks.outstock_detail') }}">
     出库明细
     </a>
- <a class="navbar-brand " href="{{ route('blackboards.index') }}">
+    <a class="navbar-brand " href="{{ route('blackboards.index') }}">
     小黑板
     </a>
      <a class="navbar-brand " href="{{ route('schedules.index') }}">
@@ -82,5 +81,8 @@
         @endguest
     </ul>
     </div>
+
+
 </div>
+
 </nav>

@@ -7,35 +7,35 @@
       <div class="card-header">
         <h1>
        <!-- 这里编写查询 -->
-          <a class="btn btn-success float-xs-right" href="{{ route('orders.export') }}">导出Excel</a>
+          <a class="btn btn-success float-xs-right" href="{{ route('orders.export') }}">导出Excel export Excel</a>
             </h1>
           <form action="{{ route('orders.order_detail') }}" method="GET" style="display: inline;">
                     {{csrf_field()}}
-                  <label >订单类型</label>
+                  <label >订单类型order type</label>
                       <select class="" name="order_type">
-                  <option value="" hidden disabled selected>请选择分类</option>
+                  <option value="" hidden disabled selected>请选择分类choose</option>
 
                       <option value="预订单" >
-                        预订单
+                        预订单 advance order
                       </option>
                        <option value="全款订单" >
-                        全款订单
+                        全款订单Full payment
                       </option>
                        <option value="补发货" >
-                        补发货
+                        补发货reissue
                       </option>
                       <option value="赊销订单" >
-                        赊销订单
+                        赊销订单sales on account order
                       </option>
 
                 </select>
 
-                <label for="date_begin-field">起始日期</label>
+                <label for="date_begin-field">起始日期begin date</label>
                     <input class="" type="text" name="date_begin" id="date_begin" value="" />
-                     <label for="date_end-field">截止日期</label>
+                     <label for="date_end-field">截止日期end date</label>
                     <input class="" type="text" name="date_end" id="date_end" value="" />
 
-                    <button type="submit" class="btn btn-sm btn-danger">查询 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">查询 query</button>
           </form>
 
       </div>
@@ -47,6 +47,10 @@
               <tr>
 
                 <th>日期</th> <th>订单编号</th> <th>客户名称</th><th>订单类型</th> <th>业务员</th><th>机组编号</th><th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>出库数量</th><th>单价</th><th>金额</th>
+              </tr>
+                     <tr>
+
+                <th>date</th> <th>order_id</th> <th>customer_name</th><th>order type</th> <th>saleman</th><th>generating_unit_no</th><th>product_type</th><th>generating_unit_type</th><th>power</th><th>phases_number</th><th>unit</th> <th>count</th><th>price</th><th>amount</th>
               </tr>
             </thead>
 
@@ -73,7 +77,7 @@
           </table>
           {!! $orders->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty!</h3>
         @endif
       </div>
     </div>

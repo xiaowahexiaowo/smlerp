@@ -146,10 +146,10 @@ class SeedRolesAndPermissionsData extends Migration
            $blackboardman->givePermissionTo('r_blackboards');
            $blackboardman->givePermissionTo('u_blackboards');
            $blackboardman->givePermissionTo('d_blackboards');
-           $blackboardman->givePermissionTo('c_schedules');
-           $blackboardman->givePermissionTo('r_schedules');
-           $blackboardman->givePermissionTo('u_schedules');
-           $blackboardman->givePermissionTo('d_schedules');
+           // $blackboardman->givePermissionTo('c_schedules');
+           // $blackboardman->givePermissionTo('r_schedules');
+           // $blackboardman->givePermissionTo('u_schedules');
+           // $blackboardman->givePermissionTo('d_schedules');
 
            // 审核员   直接把权限给对应的人  人事变动不方便
            $checkman1 = Role::create(['name' => 'Checkman1']);

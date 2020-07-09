@@ -6,8 +6,8 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          收款明细
-          <a class="btn btn-success float-xs-right" href="{{ route('collecteds.create') }}">创建</a>
+          收款明细 collected detail
+          <a class="btn btn-success float-xs-right" href="{{ route('collecteds.create') }}">创建 create</a>
         </h1>
       </div>
 
@@ -18,6 +18,10 @@
               <tr>
              <th>订单编号</th>  <th>日期</th> <th>客户名称</th> <th>金额</th> <th>付款方式</th> <th>收款人</th> <th>核对人</th> <th>备注说明</th>
                 <th class="text-xs-right">操作</th>
+              </tr>
+                  <tr>
+             <th>order id</th>  <th>date</th> <th>customer name</th> <th>collected_amount</th> <th>payment_method</th> <th>payee</th> <th>check man</th> <th>remark</th>
+                <th class="text-xs-right">option</th>
               </tr>
             </thead>
 
@@ -39,7 +43,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除</button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除delete</button>
                   </form>
                 </td>
               </tr>
@@ -48,7 +52,7 @@
           </table>
           {!! $collecteds->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty！</h3>
         @endif
       </div>
     </div>

@@ -8,9 +8,9 @@
 
       <div class="card-header">
         <h1>
-          入库明细/
+          入库明细Instock detail/
 
-         创建
+         创建create
 
         </h1>
       </div>
@@ -29,28 +29,28 @@
 
 
                 <div class="form-group">
-                	<label for="generating_unit_no-field">机组编号</label>
+                	<label for="generating_unit_no-field">机组编号generating_unit_no</label>
                 	<input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value="" />
                 </div>
 
                 <div class="form-group">
-                    <label for="warehousing_count-field">入库数量</label>
+                    <label for="warehousing_count-field">入库数量warehousing_count</label>
                     <input class="form-control" type="text" name="warehousing_count" id="warehousing_count-field" value="" />
                 </div>
 
 
                 <div class="form-group">
-                	<label for="stock_man-field">入库人</label>
+                	<label for="stock_man-field">入库人stock_man</label>
                 	<input class="form-control" type="text" name="stock_man" id="stock_man-field" value="" />
                 </div>
                 <div class="form-group">
-                	<label for="remark-field">备注</label>
+                	<label for="remark-field">备注remark</label>
                 	<input class="form-control" type="text" name="remark" id="remark-field" value="" />
                 </div>
 
           <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">保存</button>
-            <a class="btn btn-link float-xs-right" href="{{ route('instocks.index') }}"> <- 返回</a>
+            <button type="submit" class="btn btn-primary">保存save</button>
+            <a class="btn btn-link float-xs-right" href="{{ route('instocks.index') }}"> <- 返回back</a>
           </div>
         </form>
       </div>

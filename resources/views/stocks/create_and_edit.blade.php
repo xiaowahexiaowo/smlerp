@@ -8,11 +8,11 @@
 
       <div class="card-header">
         <h1>
-          物品统计 /
+          物品统计 goods count /
           @if($stock->id)
-            编辑 #{{ $stock->id }}
+            编辑 edit#{{ $stock->id }}
           @else
-            创建
+            创建 create
           @endif
         </h1>
       </div>
@@ -31,23 +31,23 @@
 
 
                 <div class="form-group">
-                	<label for="generating_unit_no-field">机组编号</label>
+                	<label for="generating_unit_no-field">机组编号generating_unit_no</label>
                 	<input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value="{{ old('generating_unit_no', $stock->generating_unit_no ) }}" required />
                 </div>
 
                 <div class="form-group">
-                    <label for="init_ stock-field">初期库存</label>
+                    <label for="init_ stock-field">初期库存init_ stock</label>
                     <input class="form-control" type="text" name="init_stock" id="init_ stock-field" value="{{ old('init_stock', $stock->init_stock ) }}" required/>
                 </div>
 
                 <div class="form-group">
-                	<label for="remark-field">备注说明</label>
+                	<label for="remark-field">备注说明reamrk</label>
                 	<input class="form-control" type="text" name="remark" id="remark-field" value="{{ old('remark', $stock->remark ) }}" required/>
                 </div>
 
           <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">保存</button>
-            <a class="btn btn-link float-xs-right" href="{{ route('stocks.index') }}"> <- 返回</a>
+            <button type="submit" class="btn btn-primary">保存save</button>
+            <a class="btn btn-link float-xs-right" href="{{ route('stocks.index') }}"> <- 返回back</a>
           </div>
         </form>
       </div>

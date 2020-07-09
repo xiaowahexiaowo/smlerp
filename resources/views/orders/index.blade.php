@@ -6,8 +6,8 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          销售单
-          <a class="btn btn-success float-xs-right" href="{{ route('orders.create') }}">创建</a>
+          销售单order
+          <a class="btn btn-success float-xs-right" href="{{ route('orders.create') }}">创建create</a>
         </h1>
       </div>
 
@@ -20,6 +20,11 @@
                 <th>NO号</th> <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>支付总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
                 <th class="text-xs-right">操作</th>
               </tr>
+              <tr>
+                <th class="text-xs-center">#</th>
+                <th>NO</th> <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
+                <th class="text-xs-right">option</th>
+              </tr>
             </thead>
 
             <tbody>
@@ -31,31 +36,31 @@
 
                 <td class="text-xs-right">
                   <a class="btn btn-sm btn-primary" href="{{ route('orders.show', $order->id) }}">
-                    查看
+                    查看view
                   </a>
 
                  @if($order->order_state=='待审核')
                   <a class="btn btn-sm btn-warning" href="{{ route('orders.edit', $order->id) }}">
-                    编辑
+                    编辑edit
                   </a>
                   @endif
 
                 @if($order->order_state=='待审核')
                   @can('1_check')
                   <a class="btn btn-sm btn-warning" href="{{ route('orders.check', $order->id) }}">
-                    初步审核
+                    初步审核first check
                   </a>
                   @endcan
                  @elseif($order->order_state=='初步审核')
                  @can('2_check')
                  <a class="btn btn-sm btn-warning" href="{{ route('orders.check', $order->id) }}">
-                    二次审核
+                    二次审核send check
                   </a>
                   @endcan
                   @elseif($order->order_state=='二次审核')
                   @can('3_check')
                       <a class="btn btn-sm btn-warning" href="{{ route('orders.check', $order->id) }}">
-                    最终审核
+                    最终审核 end check
                   @endcan
                   @endif
                  @if($order->order_state=='不通过'||$order->order_state=='待审核')
@@ -63,13 +68,13 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除 delete</button>
                   </form>
                   @endif
 
                   @if($order->order_state=='待审核')
                   <a class="btn btn-sm btn-success" href="{{ route('orders.create_detail', $order->id) }}">
-                    添加明细
+                    添加明细add detail
                   </a>
                   @endif
 
@@ -80,7 +85,7 @@
           </table>
           {!! $orders->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty!</h3>
         @endif
       </div>
     </div>

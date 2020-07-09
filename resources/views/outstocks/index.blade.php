@@ -6,7 +6,7 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          出库单
+          出库单out stock
           <a class="btn btn-success float-xs-right" href="{{ route('outstocks.create') }}">创建</a>
         </h1>
       </div>
@@ -20,6 +20,11 @@
                 <th>出库类型</th> <th>日期</th> <th>订单编号</th> <th>客户名称</th> <th>业务员</th> <th>出料仓库</th> <th>备注</th>
                 <th class="text-xs-right">操作</th>
               </tr>
+                 <tr>
+
+                <th>out stock type</th> <th>out_date</th> <th>order_id</th> <th>customer_name</th> <th>saleman</th> <th>out_stock_factory</th> <th>remark</th>
+                <th class="text-xs-right">option</th>
+              </tr>
             </thead>
 
             <tbody>
@@ -31,22 +36,22 @@
 
                 <td class="text-xs-right">
                   <a class="btn btn-sm btn-primary" href="{{ route('outstocks.show', $outstock->id) }}">
-                    查看
+                    查看view
                   </a>
 
                   <a class="btn btn-sm btn-warning" href="{{ route('outstocks.edit', $outstock->id) }}">
-                    编辑
+                    编辑edit
                   </a>
 
                   <form action="{{ route('outstocks.destroy', $outstock->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除delete </button>
                   </form>
 
                    <a class="btn btn-sm btn-success" href="{{ route('outstocks.create_detail', $outstock->id) }}">
-                    添加明细
+                    添加明细 add detail
                   </a>
                 </td>
               </tr>
@@ -55,7 +60,7 @@
           </table>
           {!! $outstocks->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty!</h3>
         @endif
       </div>
     </div>

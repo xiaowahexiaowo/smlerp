@@ -6,14 +6,14 @@
   <div class="col-md-14">
     <div class="card ">
       <div class="card-header">
-        <h1>销售单 /  #{{ $order->id }}</h1>
+        <h1>order /  #{{ $order->id }}</h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('orders.index') }}"><- 返回</a>
+              <a class="btn btn-link" href="{{ route('orders.index') }}"><- 返回back</a>
             </div>
             <div class="col-md-6">
 
@@ -25,6 +25,11 @@
               <tr>
 
                 <th>NO号</th> <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>支付总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
+
+              </tr>
+  <tr>
+
+                <th>NO</th> <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
 
               </tr>
             </thead>
@@ -56,6 +61,12 @@
                 <th>机组编号</th> <th>产品类型</th> <th>机组类型</th> <th>功率</th> <th>相数</th> <th>单位</th> <th>入库单价</th> <th>出库数量</th> <th>金额</th> <th>备注</th> <th>操作</th>
 
               </tr>
+
+                   <tr>
+
+                <th>generating_unit_no</th> <th>product_type</th> <th>generating_unit_type</th> <th>power</th> <th>phases_number</th> <th>unit</th> <th>warehousing_price</th> <th>count</th> <th>amount</th> <th>remark</th> <th>option</th>
+
+              </tr>
             </thead>
              <tbody>
 
@@ -69,7 +80,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除delete </button>
                   </form>
                   @endif
                </td>

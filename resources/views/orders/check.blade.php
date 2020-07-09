@@ -9,8 +9,8 @@
 
       <div class="card-header">
         <h1>
-          销售单 /
-            审核
+          销售单 order/
+            审核 check
 
         </h1>
       </div>
@@ -27,44 +27,44 @@
 
 
                   <div class="form-group">
-                  <label for="order_ticket-field">订单状态</label>
+                  <label for="order_ticket-field">订单状态order_state</label>
                             <select class="form-control" name="order_state" required>
                   <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
 
 
                       @if(Auth::user()->name==config('global.approval_sale1'))
                        <option value="初步审核" {{ $order->order_state == '初步审核' ? 'selected' : '' }}>
-                        初步审核
+                        初步审核 first check
                       </option>
                       @endif
 
                       @if(Auth::user()->name==config('global.approval_sale2'))
                        <option value="二次审核" {{ $order->order_state == '二次审核' ? 'selected' : '' }}>
-                        二次审核
+                        二次审核 second check
                       </option>
                       @endif
 
                       @if(Auth::user()->name==config('global.approval_sale3'))
                        <option value="已通过" {{ $order->order_state == '已通过' ? 'selected' : '' }}>
-                        审核通过
+                        审核通过 pass
                       </option>
                       @endif
 
 
                       <option value="不通过" {{ $order->order_state == '不通过' ? 'selected' : '' }}>
-                        不通过
+                        不通过 un pass
                       </option>
 
                 </select>
                 </div>
                 <div class="form-group">
-                  <label for="remark-field">备注(不通过请填写备注进行提示！！)</label>
+                  <label for="remark-field">备注(不通过请填写备注进行提示！！)remark</label>
                   <input class="form-control" type="text" name="remark" id="remark-field" value=""  required />
                 </div>
 
           <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">保存</button>
-            <a class="btn btn-link float-xs-right" href="{{ route('orders.index') }}"> <- 返回</a>
+            <button type="submit" class="btn btn-primary">保存save</button>
+            <a class="btn btn-link float-xs-right" href="{{ route('orders.index') }}"> <- 返回back</a>
           </div>
         </form>
       </div>

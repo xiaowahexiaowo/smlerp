@@ -6,7 +6,7 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          应收款统计
+          应收款统计  receivables Statistics
           <a class="btn btn-success float-xs-right" href="{{ route('exports.receivablesdetails') }}">导出</a>
         </h1>
       </div>
@@ -18,6 +18,11 @@
               <tr>
 
                 <th>订单编号</th> <th>客户名称</th> <th>应收款总金额</th> <th>已收款金额</th> <th>剩余应收金额</th> <th>业务员</th> <th>会计</th> <th>核对人</th> <th>备注说明</th>
+
+              </tr>
+                <tr>
+
+                <th>order_id</th> <th>customer_name</th> <th>receivable_amount</th> <th>received</th> <th>remaining_receivables</th> <th>saleman</th> <th>accountant</th> <th>checkman</th> <th>remark</th>
 
               </tr>
             </thead>
@@ -36,7 +41,7 @@
           </table>
           {!! $receivables->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty!</h3>
         @endif
       </div>
     </div>

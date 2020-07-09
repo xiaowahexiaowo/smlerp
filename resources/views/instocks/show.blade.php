@@ -6,14 +6,14 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>入库单 /  #{{ $instock->id }}</h1>
+        <h1>入库单Instock /  #{{ $instock->id }}</h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('instocks.index') }}"><- 返回</a>
+              <a class="btn btn-link" href="{{ route('instocks.index') }}"><- 返回back</a>
             </div>
             <div class="col-md-6">
 
@@ -26,6 +26,12 @@
               <tr>
                 <th class="text-xs-center">入库单号</th>
                 <th>入库类型</th> <th>批次</th> <th>日期</th> <th>供应商</th> <th>入库人</th> <th>收料仓库</th>
+
+              </tr>
+
+                <tr>
+                <th class="text-xs-center">Instock id</th>
+                <th>instock type</th> <th>batch</th> <th>date</th> <th>supplier</th> <th>stock man</th> <th>stack factory</th>
 
               </tr>
             </thead>
@@ -48,6 +54,11 @@
 
                 <th>日期</th> <th>入库编号</th> <th>机组编号</th><th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th><th>操作</th>
               </tr>
+
+                 <tr>
+
+                <th>date</th> <th>Instock id</th> <th>generating_unit_no</th><th>product_type</th><th>generating_unit_type</th><th>power</th><th>phases_number</th><th>unit</th> <th>warehousing_count</th><th>price</th><th>stock_amount</th><th>stock_man</th><th>remark</th><th>option</th>
+              </tr>
             </thead>
 
             <tbody>
@@ -62,7 +73,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除 delete</button>
                   </form>
                </td>
 

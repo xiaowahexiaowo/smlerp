@@ -9,9 +9,9 @@
 
       <div class="card-header">
         <h1>
-          销售单详情 /
+          销售单详情order-detail /
 
-            创建
+            创建create
 
         </h1>
       </div>
@@ -27,24 +27,24 @@
           <input type="hidden" name="order_id" value="{{ $orders->order_id}}">
 
                 <div class="form-group">
-                    <label for="generating_unit_no-field">机组编号</label>
+                    <label for="generating_unit_no-field">机组编号generating_unit_no</label>
                     <input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value=""  required />
                 </div>
                 <div class="form-group">
-                    <label for="count-field">出库数量</label>
+                    <label for="count-field">出库数量count</label>
                     <input class="form-control" type="text" name="count" id="count-field" value=""  required />
                 </div>
 
                 <div class="form-group">
-                	<label for="remarks-field">备注</label>
+                	<label for="remarks-field">备注remark</label>
                 	<input class="form-control" type="text" name="remarks" id="remarks-field" value=""  required />
                 </div>
 
 
 
           <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">保存</button>
-            <a class="btn btn-link float-xs-right" href="{{ route('orders.index') }}"> <- 返回</a>
+            <button type="submit" class="btn btn-primary">保存save</button>
+            <a class="btn btn-link float-xs-right" href="{{ route('orders.index') }}"> <- 返回back</a>
           </div>
         </form>
       </div>

@@ -6,14 +6,14 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>出库单 / 信息 </h1>
+        <h1>出库单 outstock / 信息 information </h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('outstocks.index') }}"><- 返回</a>
+              <a class="btn btn-link" href="{{ route('outstocks.index') }}"><- 返回back</a>
             </div>
 
           </div>
@@ -24,6 +24,11 @@
               <tr>
 
                 <th>出库类型</th> <th>日期</th> <th>订单编号</th> <th>客户名称</th> <th>业务员</th> <th>出料仓库</th> <th>备注</th>
+
+              </tr>
+                <tr>
+
+                <th>out stock type</th> <th>out_date</th> <th>order_id</th> <th>customer_name</th> <th>saleman</th> <th>out_stock_factory</th> <th>remark</th>
 
               </tr>
             </thead>
@@ -49,6 +54,11 @@
 
                 <th>日期</th> <th>订单编号</th><th>客户名称</th><th>业务员</th> <th>机组编号</th><th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>出库数量</th><th>库存单价</th><th>金额</th><th>备注</th><th>操作</th>
               </tr>
+
+                 <tr>
+
+                <th>date</th> <th>order_id</th><th>customer_name</th><th>saleman</th> <th>generating_unit_no</th><th>product_type</th><th>generating_unit_type</th><th>power</th><th>phases_number</th><th>unit</th> <th>out_count</th><th>warehousing_price</th><th>amount</th><th>remark</th><th>option</th>
+              </tr>
             </thead>
 
             <tbody>
@@ -62,7 +72,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除delete </button>
                   </form>
                </td>
 
@@ -76,7 +86,7 @@
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除 delete</button>
                   </form>
                </td>
 

@@ -6,8 +6,8 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          小黑板
-          <a class="btn btn-success float-xs-right" href="{{ route('blackboards.create') }}">创建</a>
+          小黑板  blackboard
+          <a class="btn btn-success float-xs-right" href="{{ route('blackboards.create') }}">创建 create</a>
         </h1>
       </div>
 
@@ -18,8 +18,9 @@
               <tr>
                 <th class="text-xs-center">#</th>
                 <th>Model型号</th> <th>Ava1b1仓库可用</th> <th>Dp预付款</th> <th>Otw发货路上</th> <th>Chn国内已生产</th> <th>Up排产待作</th> <th>可用合计</th>
-                <th class="text-xs-right">操作</th>
+                <th class="text-xs-right">操作Option</th>
               </tr>
+
             </thead>
 
             <tbody>
@@ -33,14 +34,14 @@
 
 
                   <a class="btn btn-sm btn-warning" href="{{ route('blackboards.edit', $blackboard->id) }}">
-                    编辑
+                    编辑edit
                   </a>
 
                   <form action="{{ route('blackboards.destroy', $blackboard->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除delete</button>
                   </form>
                 </td>
               </tr>
@@ -49,7 +50,7 @@
           </table>
           {!! $blackboards->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的! empty!</h3>
         @endif
       </div>
     </div>
