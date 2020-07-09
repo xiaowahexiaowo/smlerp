@@ -6,14 +6,14 @@
   <div class="col-md-10 offset-md-1">
     <div class="card ">
       <div class="card-header">
-        <h1>排产单 / 详细 </h1>
+        <h1>排产发货明细schedules detail / 详细 detail</h1>
       </div>
 
       <div class="card-body">
         <div class="card-block bg-light">
           <div class="row">
             <div class="col-md-6">
-              <a class="btn btn-link" href="{{ route('schedules.index') }}"><- 返回</a>
+              <a class="btn btn-link" href="{{ route('schedules.index') }}"><- 返回back</a>
             </div>
 
           </div>
@@ -21,10 +21,13 @@
         <br>
  <table class="table table-sm table-striped">
             <thead>
+             <tr>
+                <th class="text-xs-center">#</th>
+                <th>排产单号</th> <th>排产单状态</th> <th class="text-xs-right">操作</th>
+              </tr>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>下发日期</th> <th>交货日期</th> <th>计划编号</th> <th>分类</th>
-
+                <th>schedules_id</th> <th>schedules_state</th> <th class="text-xs-right">option</th>
               </tr>
             </thead>
 
@@ -32,8 +35,7 @@
 
               <tr>
                 <td class="text-xs-center"><strong>{{$schedule->id}}</strong></td>
-
-                <td>{{$schedule->start_date}}</td> <td>{{$schedule->delivery_date}}</td> <td>{{$schedule->plan_no}}</td> <td>{{$schedule->category}}</td>
+         <td>{{$schedule->schedules_id}}</td> <td>{{$schedule->schedules_state}}</td>
 
 
               </tr>

@@ -6,8 +6,8 @@
     <div class="card ">
       <div class="card-header">
         <h1>
-          排产单
-          <a class="btn btn-success float-xs-right" href="{{ route('schedules.create') }}">创建</a>
+          排产发货明细 schedule detail
+          <a class="btn btn-success float-xs-right" href="{{ route('schedules.create') }}">创建create</a>
         </h1>
       </div>
 
@@ -17,8 +17,11 @@
             <thead>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>下发日期</th> <th>交货日期</th> <th>计划编号</th> <th>分类</th>
-                <th class="text-xs-right">操作</th>
+                <th>排产单号</th> <th>排产单状态</th> <th class="text-xs-right">操作</th>
+              </tr>
+              <tr>
+                <th class="text-xs-center">#</th>
+                <th>schedules_id</th> <th>schedules_state</th> <th class="text-xs-right">option</th>
               </tr>
             </thead>
 
@@ -27,22 +30,22 @@
               <tr>
                 <td class="text-xs-center"><strong>{{$schedule->id}}</strong></td>
 
-                <td>{{$schedule->start_date}}</td> <td>{{$schedule->delivery_date}}</td> <td>{{$schedule->plan_no}}</td> <td>{{$schedule->category}}</td>
+                <td>{{$schedule->schedules_id}}</td> <td>{{$schedule->schedules_state}}</td>
 
                 <td class="text-xs-right">
                   <a class="btn btn-sm btn-primary" href="{{ route('schedules.show', $schedule->id) }}">
-                    查看详细
+                    查看详细 view detail
                   </a>
 
                   <a class="btn btn-sm btn-warning" href="{{ route('schedules.edit', $schedule->id) }}">
-                    编辑
+                    编辑 edit
                   </a>
 
                   <form action="{{ route('schedules.destroy', $schedule->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <button type="submit" class="btn btn-sm btn-danger">删除 </button>
+                    <button type="submit" class="btn btn-sm btn-danger">删除 delete</button>
                   </form>
                 </td>
               </tr>
@@ -51,7 +54,7 @@
           </table>
           {!! $schedules->render() !!}
         @else
-          <h3 class="text-xs-center alert alert-info">空的!</h3>
+          <h3 class="text-xs-center alert alert-info">空的!empty！</h3>
         @endif
       </div>
     </div>

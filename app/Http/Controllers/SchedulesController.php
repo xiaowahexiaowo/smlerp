@@ -36,7 +36,7 @@ class SchedulesController extends Controller
 	public function store(ScheduleRequest $request)
 	{
 		$schedule = Schedule::create($request->all());
-        session()->flash('success', '排产单创建成功！');
+        session()->flash('success', '排产单明细创建成功！');
 		return redirect()->route('schedules.show', $schedule->id);
 	}
 
@@ -50,7 +50,7 @@ class SchedulesController extends Controller
 	{
 		$this->authorize('update', $schedule);
 		$schedule->update($request->all());
-session()->flash('success', '排产单更新成功！');
+session()->flash('success', '排产单明细更新成功！');
 		return redirect()->route('schedules.show', $schedule->id);
 	}
 
@@ -58,7 +58,7 @@ session()->flash('success', '排产单更新成功！');
 	{
 		$this->authorize('destroy', $schedule);
 		$schedule->delete();
-session()->flash('success', '排产单删除成功！');
+session()->flash('success', '排产单明细删除成功！');
 		return redirect()->route('schedules.index');
 	}
 }

@@ -8,11 +8,11 @@
 
       <div class="card-header">
         <h1>
-          排产单 /
+          排产发货明细 /schedule detail
           @if($schedule->id)
-            编辑 #{{ $schedule->id }}
+            编辑 edit#{{ $schedule->id }}
           @else
-            创建
+            创建 create
           @endif
         </h1>
       </div>
@@ -31,29 +31,35 @@
 
 
                 <div class="form-group">
-                    <label for="start_date-field">下发日期</label>
-                    <input class="form-control" type="text" name="start_date" id="start_date-field" value="{{ old('start_date', $schedule->start_date ) }}" />
+                    <label for="schedules_id-field">排产单号schedules_id</label>
+                    <input class="form-control" type="text" name="schedules_id" id="schedules_id-field" value="{{ old('schedules_id', $schedule->schedules_id ) }}" />
                 </div>
                 <div class="form-group">
-                    <label for="delivery_date-field">交货日期</label>
-                    <input class="form-control" type="text" name="delivery_date" id="delivery_date-field" value="{{ old('delivery_date', $schedule->delivery_date ) }}" />
+                  <label for="schedules_state-field">排产单状态schedules_state</label>
+                   <select class="form-control" name="schedules_state" required>
+                  <option value="" hidden disabled {{ $schedule->schedules_state ? '' : 'selected' }}>请选择分类</option>
+
+                      <option value="排产已发货" {{ $schedule->schedules_state == '排产已发货' ? 'selected' : '' }}>
+                        排产已发货  have delivered goods
+                      </option>
+                      <option value="排产未发货" {{ $schedule->schedules_state == '排产未发货' ? 'selected' : '' }}>
+                        排产未发货  wait deliver goods
+                      </option>
+                      <option value="排产未生产" {{ $schedule->schedules_state == '排产未生产' ? 'selected' : '' }}>
+                        排产未生产  wait product goods
+                      </option>
+
+                </select>
                 </div>
+
                 <div class="form-group">
-                	<label for="plan_no-field">计划编号</label>
-                	<input class="form-control" type="text" name="plan_no" id="plan_no-field" value="{{ old('plan_no', $schedule->plan_no ) }}" />
-                </div>
-                <div class="form-group">
-                	<label for="category-field">类别</label>
-                	<input class="form-control" type="text" name="category" id="category-field" value="{{ old('category', $schedule->category ) }}" />
-                </div>
-                <div class="form-group">
-                	<label for="appendix-field">附件</label>
+                	<label for="appendix-field">附件appendix</label>
                     <textarea name="appendix" id="appendix-field" class="form-control" rows="3"  required >{{ old('appendix', $schedule->appendix ) }}</textarea>
                 </div>
 
           <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">保存</button>
-            <a class="btn btn-link float-xs-right" href="{{ route('schedules.index') }}"> <- 返回</a>
+            <button type="submit" class="btn btn-primary">保存save</button>
+            <a class="btn btn-link float-xs-right" href="{{ route('schedules.index') }}"> <- 返回back</a>
           </div>
         </form>
       </div>

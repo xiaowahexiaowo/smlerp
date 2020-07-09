@@ -3,16 +3,16 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSchedulesTable extends Migration 
+class CreateSchedulesTable extends Migration
 {
 	public function up()
 	{
 		Schema::create('schedules', function(Blueprint $table) {
             $table->increments('id');
-            $table->datetime('start_date');
-            $table->datetime('delivery_date');
-            $table->string('plan_no');
-            $table->string('category');
+            //排产单号
+            $table->string('schedules_id');
+            // 排产状态
+            $table->string('schedules_state');
             $table->string('appendix');
             $table->timestamps();
         });
