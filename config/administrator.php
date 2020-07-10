@@ -42,6 +42,10 @@ return array(
             'roles',
             'permissions',
         ],
+         '参数设置' => [
+            'set',
+
+        ],
     ],
 
     /*

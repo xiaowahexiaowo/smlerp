@@ -21,7 +21,7 @@ class OrderdetailsController extends Controller
 
         $detail->fill($request->all());
 $generating_unit_no = $request->input('generating_unit_no');
-$set=DB::table('setting')->where('generating_unit_no', $generating_unit_no)->first();
+$set=DB::table('settings')->where('generating_unit_no', $generating_unit_no)->first();
 
 if(!$set){
     session()->flash('warning', '机组编号不存在！');
