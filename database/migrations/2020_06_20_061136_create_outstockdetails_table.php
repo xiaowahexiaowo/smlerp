@@ -19,8 +19,8 @@ class CreateOutstockdetailsTable extends Migration
             $table->integer('phases_number');
             $table->string('unit');
             $table->integer('out_count')->unsigned();
-            $table->float('warehousing_price',8,2);
-            $table->float('amount',8,2);
+            $table->float('warehousing_price',10,2);
+            $table->float('amount',10,2);
             $table->string('remark');
             $table->timestamps();
         });

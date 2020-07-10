@@ -17,12 +17,12 @@ class CreateOrdersTable extends Migration
             $table->text('customer_name');
             $table->integer('user_id')->unsigned()->index();
             $table->string('payment_type');
-            $table->float('total_cost',8,2);
+            $table->float('total_cost',10,2);
             $table->string('payment_method');
             $table->string('remark');
-            $table->float('payment_amount',8,2);
-            $table->float('tax_deductible',8,2);
-            $table->float('arrears',8,2);
+            $table->float('payment_amount',10,2);
+            $table->float('tax_deductible',10,2);
+            $table->float('arrears',10,2);
             $table->string('order_state')->index();
             $table->integer('order_detail_id')->unsigned()->index();
             $table->text('appendix');

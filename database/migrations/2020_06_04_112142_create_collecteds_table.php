@@ -12,7 +12,7 @@ class CreateCollectedsTable extends Migration
             $table->string('order_id');
             $table->datetime('collection_date');
             $table->string('customer_name');
-            $table->float('collected_amount',8,2);
+            $table->float('collected_amount',10,2);
             $table->string('payment_method');
             $table->string('payee');
             $table->string('check_man');

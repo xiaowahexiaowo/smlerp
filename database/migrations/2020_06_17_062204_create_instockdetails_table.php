@@ -18,8 +18,8 @@ class CreateInstockdetailsTable extends Migration
             $table->integer('phases_number');
             $table->string('unit');
             $table->integer('warehousing_count')->unsigned();
-            $table->float('warehousing_price',8,2);
-            $table->float('stock_amount',8,2);
+            $table->float('warehousing_price',10,2);
+            $table->float('stock_amount',10,2);
             $table->string('stock_man');
             $table->string('remark');
             $table->timestamps();

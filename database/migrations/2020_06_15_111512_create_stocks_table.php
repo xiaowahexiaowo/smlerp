@@ -19,8 +19,8 @@ class CreateStocksTable extends Migration
             $table->integer('warehousing_count')->unsigned();
             $table->integer('out_count')->unsigned();
             $table->integer('inventory_quantity')->unsigned();
-            $table->float('warehousing_price',8,2);
-            $table->float('stock_amount',8,2);
+            $table->float('warehousing_price',10,2);
+            $table->float('stock_amount',10,2);
             $table->string('remark');
             $table->timestamps();
         });
