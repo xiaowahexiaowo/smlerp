@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
 <div class="container">
     <!-- Branding Image -->
-    <a class="navbar-brand " href="{{ url('/') }}">
+  <!--   <a class="navbar-brand " href="{{ url('/') }}">
     SmlErp
-    </a>
+    </a> -->
     <a class="navbar-brand " href="{{ url('/orders') }}">
-    销售单
+    销售单order
     </a>
     <a class="navbar-brand " href="{{ route('orders.order_detail') }}">
-    销售单明细
+    销售单明细orderdetail
     </a>
     <a class="navbar-brand " href="{{ route('collecteds.index') }}">
     收款明细
@@ -32,10 +32,10 @@
     出库明细
     </a>
     <a class="navbar-brand " href="{{ route('blackboards.index') }}">
-    小黑板
+    小黑板stock
     </a>
      <a class="navbar-brand " href="{{ route('schedules.index') }}">
-    排产单
+    排产单schedules
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -43,9 +43,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <!-- Left Side Of Navbar -->
-    <ul class="navbar-nav mr-auto">
+<!--     <ul class="navbar-nav mr-auto">
 
-    </ul>
+    </ul> -->
 
     <!-- Right Side Of Navbar -->
     <ul class="navbar-nav navbar-right">
@@ -60,15 +60,12 @@
             {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
               @can('manage_users')
                 <a class="dropdown-item" href="{{ url(config('administrator.uri')) }}">
                   <i class="fas fa-tachometer-alt mr-2"></i>
                   管理后台
                 </a>
-                <div class="dropdown-divider"></div>
               @endcan
-            <div class="dropdown-divider"></div>
 
             <a class="dropdown-item" id="logout" href="#">
                 <form action="{{ route('logout') }}" method="POST">
@@ -84,5 +81,7 @@
 
 
 </div>
+
+
 
 </nav>

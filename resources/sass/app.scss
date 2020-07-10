@@ -14,7 +14,7 @@
 
 body {
   font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* header */
@@ -49,8 +49,8 @@ body {
   background-color: #000;
 
   .container {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
 
     p {
       margin: 19px 0;
@@ -58,6 +58,9 @@ body {
 
       a {
         color: inherit;
+      }
+      .navbar-brand{
+      font-size:1rem;
       }
     }
   }

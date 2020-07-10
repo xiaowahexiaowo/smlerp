@@ -4544,7 +4544,7 @@ input[type=button].btn-block {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -16947,7 +16947,7 @@ readers do not read off random characters that represent icons */
 
 body {
   font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* header */
@@ -16984,8 +16984,8 @@ body {
 }
 
 .footer .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .footer .container p {
@@ -16995,6 +16995,10 @@ body {
 
 .footer .container p a {
   color: inherit;
+}
+
+.footer .container p .navbar-brand {
+  font-size: 1rem;
 }
 
 /* User register page */
