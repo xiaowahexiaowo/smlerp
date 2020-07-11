@@ -9,7 +9,7 @@ class CreateOrdersTable extends Migration
 	{
 		Schema::create('orders', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_no')->unique()->unsigned();
+            // $table->integer('order_no')->unique()->unsigned();
             $table->string('order_id')->unique();
             $table->string('order_type');
             $table->datetime('order_date');

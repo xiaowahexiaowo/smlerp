@@ -17,12 +17,12 @@
             <thead>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>NO号</th> <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>支付总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
+                 <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>支付总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
                 <th class="text-xs-right">操作</th>
               </tr>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>NO</th> <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
+                 <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
                 <th class="text-xs-right">option</th>
               </tr>
             </thead>
@@ -32,7 +32,7 @@
               <tr>
                 <td class="text-xs-center"><strong>{{$order->id}}</strong></td>
 
-                <td>{{$order->order_no}}</td> <td>{{$order->order_id}}</td> <td>{{$order->order_type}}</td> <td>{{$order->order_date->toDateString()}}</td> <td>{{$order->order_ticket}}</td> <td>{{$order->customer_name}}</td> <td>{{$order->user->name}}</td> <td>{{$order->payment_type}}</td> <td>{{$order->total_cost}}</td> <td>{{$order->payment_method}}</td> <td>{{$order->remark}}</td> <td>{{$order->payment_amount}}</td> <td>{{$order->tax_deductible}}</td> <td>{{$order->arrears}}</td> <td>{{$order->order_state}}</td>
+               <td>{{$order->order_id}}</td> <td>{{$order->order_type}}</td> <td>{{$order->order_date->toDateString()}}</td> <td>{{$order->order_ticket}}</td> <td>{{$order->customer_name}}</td> <td>{{$order->user->name}}</td> <td>{{$order->payment_type}}</td> <td>{{$order->total_cost}}</td> <td>{{$order->payment_method}}</td> <td>{{$order->remark}}</td> <td>{{$order->payment_amount}}</td> <td>{{$order->tax_deductible}}</td> <td>{{$order->arrears}}</td> <td>{{$order->order_state}}</td>
 
                 <td class="text-xs-right">
                   <a class="btn btn-sm btn-primary" href="{{ route('orders.show', $order->id) }}">

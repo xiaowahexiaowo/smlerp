@@ -32,23 +32,23 @@
                   <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
 
 
-                      @if(Auth::user()->name==config('global.approval_sale1'))
+                      @can('1_check')
                        <option value="初步审核" {{ $order->order_state == '初步审核' ? 'selected' : '' }}>
                         初步审核 first check
                       </option>
-                      @endif
+                      @endcan
 
-                      @if(Auth::user()->name==config('global.approval_sale2'))
+                      @can('2_check')
                        <option value="二次审核" {{ $order->order_state == '二次审核' ? 'selected' : '' }}>
                         二次审核 second check
                       </option>
-                      @endif
+                      @endcan
 
-                      @if(Auth::user()->name==config('global.approval_sale3'))
+                      @can('3_check')
                        <option value="已通过" {{ $order->order_state == '已通过' ? 'selected' : '' }}>
                         审核通过 pass
                       </option>
-                      @endif
+                      @endcan
 
 
                       <option value="不通过" {{ $order->order_state == '不通过' ? 'selected' : '' }}>

@@ -33,10 +33,6 @@
 
 
                 <div class="form-group">
-                    <label for="order_no-field">No 号 no</label>
-                    <input class="form-control" type="text" name="order_no" id="order_no-field" value="{{ old('order_no', $order->order_no ) }}"  required />
-                </div>
-                <div class="form-group">
                     <label for="order_id-field">订单编号 order_id</label>
                     <input class="form-control" type="text" name="order_id" id="order_id-field" value="{{ old('order_id', $order->order_id ) }}"  required />
                 </div>

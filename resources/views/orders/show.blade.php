@@ -24,12 +24,12 @@
             <thead>
               <tr>
 
-                <th>NO号</th> <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>支付总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
+               <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>支付总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
 
               </tr>
   <tr>
 
-                <th>NO</th> <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
+              <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
 
               </tr>
             </thead>
