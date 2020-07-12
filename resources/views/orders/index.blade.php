@@ -22,7 +22,7 @@
               </tr>
               <tr>
                 <th class="text-xs-center">#</th>
-                 <th>order_id</th> <th>order type</th> <th>order date</th> <th>order_ticket</th> <th>customer_name</th> <th>salesman</th> <th>payment_type</th> <th>total_cost</th> <th>payment_method</th> <th>remark</th> <th>payment_amount</th> <th>tax_deductible</th> <th>arrears</th> <th>order_state</th>
+                 <th>P.O no</th> <th>P.O type</th> <th>P.O date</th> <th>P.O detail</th> <th>client name</th> <th>sales</th> <th>payment_type</th> <th>total_payment</th> <th>payment_terms</th> <th>note</th> <th>payment_amount</th> <th>2307</th> <th>balance</th> <th>P.O state</th>
                 <th class="text-xs-right">option</th>
               </tr>
             </thead>

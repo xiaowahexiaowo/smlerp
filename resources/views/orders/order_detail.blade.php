@@ -11,7 +11,7 @@
             </h1>
           <form action="{{ route('orders.order_detail') }}" method="GET" style="display: inline;">
                     {{csrf_field()}}
-                  <label >订单类型order type</label>
+                  <label >订单类型P.O type</label>
                       <select class="" name="order_type">
                   <option value="" hidden disabled selected>请选择分类choose</option>
 
@@ -50,7 +50,7 @@
               </tr>
                      <tr>
 
-                <th>date</th> <th>order_id</th> <th>customer_name</th><th>order type</th> <th>saleman</th><th>generating_unit_no</th><th>product_type</th><th>generating_unit_type</th><th>power</th><th>phases_number</th><th>unit</th> <th>count</th><th>price</th><th>amount</th>
+                <th>date</th> <th>P.O no</th> <th>client_name</th><th>P.O type</th> <th>sales</th><th>unit plate</th><th>unit_type</th><th>unit_model</th><th>power</th><th>phases</th><th>unit</th> <th>delivery pcs</th><th>unit price</th><th>total price</th>
               </tr>
             </thead>
 

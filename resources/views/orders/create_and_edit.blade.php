@@ -33,11 +33,11 @@
 
 
                 <div class="form-group">
-                    <label for="order_id-field">订单编号 order_id</label>
+                    <label for="order_id-field">订单编号P.O no</label>
                     <input class="form-control" type="text" name="order_id" id="order_id-field" value="{{ old('order_id', $order->order_id ) }}"  required />
                 </div>
                 <div class="form-group">
-                	<label for="order_type-field">订单类型 order_type</label>
+                	<label for="order_type-field">订单类型 P.O_type</label>
                 	    <select class="form-control" name="order_type" required>
                   <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
 
@@ -57,11 +57,11 @@
                 </select>
                 </div>
                 <div class="form-group">
-                    <label for="order_date-field">订单日期order_date</label>
+                    <label for="order_date-field">订单日期P.O_date</label>
                     <input class="form-control" type="text" name="order_date" id="order_date-field" value="{{ old('order_date', $order->order_date ) }}"  required />
                 </div>
                 <div class="form-group">
-                	<label for="order_ticket-field">订单摘要order_ticket</label>
+                	<label for="order_ticket-field">订单摘要P.O_detail</label>
                 	          <select class="form-control" name="order_ticket" required>
                   <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
 
@@ -74,7 +74,7 @@
                 </select>
                 </div>
                 <div class="form-group">
-                	<label for="customer_name-field">客户名称customer_name</label>
+                	<label for="customer_name-field">客户名称client_name</label>
                 <input class="form-control" type="text" name="customer_name" id="customer_name-field" value="{{ old('customer_name', $order->customer_name) }}"  required />
                 </div>
 
@@ -93,7 +93,7 @@
                 </div>
 
                 <div class="form-group">
-                	<label for="payment_method-field">支付方式payment_method</label>
+                	<label for="payment_method-field">支付方式payment_terms</label>
                  <select class="form-control" name="payment_method" required>
                   <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
 
@@ -114,7 +114,7 @@
                     <input class="form-control" type="text" name="payment_amount" id="payment_amount-field" value="{{ old('payment_amount', $order->payment_amount ) }}"  required />
                 </div>
                 <div class="form-group">
-                    <label for="tax_deductible-field">可抵免税款tax_deductible</label>
+                    <label for="tax_deductible-field">可抵免税款2307</label>
                     <input class="form-control" type="text" name="tax_deductible" id="tax_deductible-field" value="{{ old('tax_deductible', $order->tax_deductible ) }}"  required />
                 </div>
 

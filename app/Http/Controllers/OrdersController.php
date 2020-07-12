@@ -25,9 +25,9 @@ class OrdersController extends Controller
 
         // 财务和管理员查看的是所有
         if(!$user->hasRole('Flb_saleman')){
-           $orders = Order::paginate(30);
+           $orders = Order::orderBy('created_at','desc')->paginate(30);
         }else{
-           $orders=Order::where('user_id',$user->id)->paginate(30);
+           $orders=Order::where('user_id',$user->id)->orderBy('created_at','desc')->paginate(30);
         }
 		return view('orders.index', compact('orders'));
 	}
