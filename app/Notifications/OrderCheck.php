@@ -45,10 +45,10 @@ class OrderCheck extends Notification implements ShouldQueue
 
        public function toMail($notifiable)
     {
-        $url=url("/orders").'/'.$order->id;
+        $url=url("/orders").'/'.$this->order->id;
 
         return (new MailMessage)
-                    ->line('有新的销售单需要被审核')
+                    ->line('有新的销售单,单号：'.$this->order->order_id.'需要被审核')
                     ->action('查看销售单', $url);
     }
 }
