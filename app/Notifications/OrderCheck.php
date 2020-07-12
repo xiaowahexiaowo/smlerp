@@ -39,16 +39,26 @@ class OrderCheck extends Notification implements ShouldQueue
             'user_name' => $order->user->name,
             'order_id' => $order->order_id,
             'order_link' => $url,
-
+            'order_state'=>$order->order_state,
         ];
     }
 
        public function toMail($notifiable)
     {
         $url=url("/orders").'/'.$this->order->id;
-
-        return (new MailMessage)
+        if($this->order->order_state=='不通过'){
+            return (new MailMessage)
+                    ->line('您的销售单,单号：'.$this->order->order_id.'审核不通过，请查看原因后，删除并重新创建！')
+                    ->action('查看销售单', $url);
+        }elseif($this->order->order_state=='已通过'){
+            return (new MailMessage)
+                    ->line('您的销售单,单号：'.$this->order->order_id.'审核已通过')
+                    ->action('查看销售单', $url);
+        }else{
+              return (new MailMessage)
                     ->line('有新的销售单,单号：'.$this->order->order_id.'需要被审核')
                     ->action('查看销售单', $url);
+        }
+
     }
 }

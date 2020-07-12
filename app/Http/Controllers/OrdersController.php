@@ -9,7 +9,8 @@ use Auth;
 use App\Handlers\ImageUploadHandler;
 
 use App\Exports\OrdersExport;
-
+use App\Models\User;
+use App\Notifications\OrderCheck;
 class OrdersController extends Controller
 {
     public function __construct()
@@ -78,6 +79,22 @@ class OrdersController extends Controller
                $order->update($request->all());
 
               session()->flash('success', '审核完毕！');
+
+                      // 通知审核员
+              if ($request->input('order_state')=='初步审核') {
+                  $user = User::role('Checkman2')->first();
+              }
+              if ($request->input('order_state')=='二次审核') {
+                  $user = User::role('Checkman3')->first();
+              }
+// 通知 销售员
+               if ($request->input('order_state')=='不通过'||$request->input('order_state')=='已通过') {
+
+                  $user=$order->user;
+              }
+
+        $user->notify(new OrderCheck($order));
+
               return redirect()->route('orders.show', $order->id);
         }
 

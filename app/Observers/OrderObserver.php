@@ -12,7 +12,7 @@ class OrderObserver
 {
     public function created(Order $order)
     {
-         // 通知话题作者有新的评论
+         // 通知1级审核员
         $user = User::role('Checkman1')->first();
         $user->notify(new OrderCheck($order));
     }
