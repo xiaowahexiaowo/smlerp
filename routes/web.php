@@ -60,3 +60,5 @@ Route::resource('outstockdetails', 'OutstockdetailsController', ['only' => ['ind
 
 Route::resource('blackboards', 'BlackboardsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('schedules', 'SchedulesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);

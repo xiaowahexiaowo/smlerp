@@ -4544,7 +4544,7 @@ input[type=button].btn-block {
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -16997,8 +16997,8 @@ body {
   color: inherit;
 }
 
-.footer .container p .navbar-brand {
-  font-size: 1rem;
+.navbar-brand {
+  font-size: 0.9rem;
 }
 
 /* User register page */
@@ -17476,5 +17476,20 @@ body {
   margin: 0.4em auto 0.6em;
   font-size: 28px;
   line-height: 38px;
+}
+
+/* 消息通知 */
+
+.notification-badge .badge {
+  font-size: 12px;
+  margin-top: 14px;
+}
+
+.notification-badge .badge-secondary {
+  background-color: #EBE8E8;
+}
+
+.notification-badge .badge-hint {
+  background-color: #d15b47 !important;
 }
 

@@ -59,11 +59,15 @@ body {
       a {
         color: inherit;
       }
-      .navbar-brand{
-      font-size:1rem;
-      }
+
     }
   }
+}
+
+.navbar-brand {
+
+  font-size: 0.9rem;
+
 }
 /* User register page */
 .register-page {
@@ -95,4 +99,22 @@ body {
             line-height: 38px;
         }
     }
+}
+
+
+
+/* 消息通知 */
+.notification-badge {
+  .badge {
+    font-size: 12px;
+    margin-top: 14px;
+  }
+
+  .badge-secondary {
+    background-color: #EBE8E8;
+  }
+
+  .badge-hint {
+    background-color: #d15b47 !important;
+  }
 }
