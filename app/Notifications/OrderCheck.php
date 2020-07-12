@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Order;
 
-class OrderCheck extends Notification
+class OrderCheck extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -23,7 +23,7 @@ class OrderCheck extends Notification
     public function via($notifiable)
     {
         // 开启通知的频道
-        return ['database'];
+        return ['database','mail'];
     }
 
     public function toDatabase($notifiable)
@@ -41,5 +41,14 @@ class OrderCheck extends Notification
             'order_link' => $url,
 
         ];
+    }
+
+       public function toMail($notifiable)
+    {
+        $url=url("/orders").'/'.$order->id;
+
+        return (new MailMessage)
+                    ->line('有新的销售单需要被审核')
+                    ->action('查看销售单', $url);
     }
 }
