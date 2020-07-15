@@ -54,17 +54,17 @@ class UsersTableSeeder extends Seeder
         $user->assignRole('Maintainer');
 
 // 分别设置3级审核权限
-          $user = User::find(2);
-        $user->assignRole('Checkman1');
-$user->assignRole('Treasurer');
+//           $user = User::find(2);
+//         $user->assignRole('Checkman1');
+// $user->assignRole('Treasurer');
 
-          $user = User::find(3);
-        $user->assignRole('Checkman2');
-$user->assignRole('Treasurer');
+//           $user = User::find(3);
+//         $user->assignRole('Checkman2');
+// $user->assignRole('Treasurer');
 
-          $user = User::find(4);
-        $user->assignRole('Checkman3');
-        $user->assignRole('Maintainer');
+//           $user = User::find(4);
+//         $user->assignRole('Checkman3');
+//         $user->assignRole('Maintainer');
 
 
     }
