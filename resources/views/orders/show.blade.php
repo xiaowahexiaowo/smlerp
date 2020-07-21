@@ -58,13 +58,13 @@
             <thead>
               <tr>
 
-                <th>机组编号</th> <th>产品类型</th> <th>机组类型</th> <th>功率</th> <th>相数</th> <th>单位</th> <th>入库单价</th> <th>出库数量</th> <th>金额</th> <th>备注</th> <th>操作</th>
+          <th>产品类型</th> <th>机组类型</th> <th>功率</th> <th>相数</th> <th>单位</th> <th>入库单价</th> <th>出库数量</th> <th>金额</th> <th>备注</th> <th>操作</th>
 
               </tr>
 
                    <tr>
 
-               <th>unit plate</th><th>unit_type</th><th>unit_model</th><th>power</th><th>phases</th><th>unit</th><th>unit price</th><th>delivery pcs</th><th>total price</th><th>remark</th> <th>option</th>
+              <th>unit_type</th><th>unit_model</th><th>power</th><th>phases</th><th>unit</th><th>unit price</th><th>delivery pcs</th><th>total price</th><th>remark</th> <th>option</th>
 
               </tr>
             </thead>
@@ -72,7 +72,7 @@
 
              @foreach($order->orderdetails as $detail)
               <tr>
-               <td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->count}}</td><td>{{$detail->amount}}</td><td>{{$detail->remarks}}</td>
+               <td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->count}}</td><td>{{$detail->amount}}</td><td>{{$detail->remarks}}</td>
 
                <td  class="text-xs-right">
                  @if($order->order_state=='待审核'||$order->order_state=='不通过')

@@ -27,12 +27,16 @@
           <input type="hidden" name="order_id" value="{{ $orders->order_id}}">
 
                 <div class="form-group">
-                    <label for="generating_unit_no-field">机组编号generating_unit_no</label>
-                    <input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value=""  required />
+                    <label for="generating_unit_type-field">机组型号generating_unit_type</label>
+                    <input class="form-control" type="text" name="generating_unit_type" id="generating_unit_type-field" value=""  required />
                 </div>
                 <div class="form-group">
                     <label for="count-field">出库数量count</label>
                     <input class="form-control" type="text" name="count" id="count-field" value=""  required />
+                </div>
+                <div class="form-group">
+                    <label for="warehousing_price-field">单价Unit Price</label>
+                    <input class="form-control" type="text" name="warehousing_price" id="warehousing_price-field" value=""  required />
                 </div>
 
                 <div class="form-group">

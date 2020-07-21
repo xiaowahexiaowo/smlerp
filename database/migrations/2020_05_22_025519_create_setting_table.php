@@ -16,10 +16,9 @@ class CreateSettingTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            // 机组编号不能重复
-            $table->string('generating_unit_no')->index()->unique();
+
             $table->string('product_type');
-            $table->string('generating_unit_type');
+            $table->string('generating_unit_type')->unique();
             $table->string('power');
             $table->integer('phases_number');
             $table->string('unit');

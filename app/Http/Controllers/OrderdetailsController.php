@@ -20,22 +20,22 @@ class OrderdetailsController extends Controller
     {
 
         $detail->fill($request->all());
-$generating_unit_no = $request->input('generating_unit_no');
-$set=DB::table('settings')->where('generating_unit_no', $generating_unit_no)->first();
+$generating_unit_type = $request->input('generating_unit_type');
+$set=DB::table('settings')->where('generating_unit_type', $generating_unit_type)->first();
 
 if(!$set){
-    session()->flash('warning', '机组编号不存在！');
+    session()->flash('warning', '机组型号不存在！请核对！');
  return redirect()->route('orders.index');
 }
 
         $detail->product_type=$set->product_type;
-        $detail->generating_unit_type=$set->generating_unit_type;
+
          $detail->power=$set->power;
          $detail->phases_number=$set->phases_number;
          $detail->unit=$set->unit;
-        $detail->warehousing_price=$set->warehousing_price;
-        //出库数量*入库单价=金额
-        $detail->amount=($request->input('count'))*($set->warehousing_price);
+
+        //出库数量*单价=金额
+        $detail->amount=($request->input('count'))*($request->input('warehousing_price'));
         $detail->save();
         session()->flash('success', '订单详情创建成功！');
         return redirect()->route('orders.index');
