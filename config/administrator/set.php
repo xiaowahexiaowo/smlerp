@@ -10,9 +10,7 @@ return [
 
 
     'columns' => [
-        'generating_unit_no' => [
-            'title' => '机组编号',
-        ],
+
         'product_type' => [
             'title'    => '产品类型',
             'sortable' => false,
@@ -43,9 +41,7 @@ return [
         ],
     ],
     'edit_fields' => [
-        'generating_unit_no' => [
-            'title' => '机组编号',
-        ],
+
         'product_type' => [
             'title'    => '产品类型',
             'sortable' => false,
@@ -72,15 +68,15 @@ return [
         ],
     ],
     'filters' => [
-        'generating_unit_no' => [
+        'generating_unit_type' => [
             'title' => '机组编号',
         ],
     ],
     'rules'   => [
-        'name' => 'required|unique:generating_unit_no'
+        'name' => 'required|unique:generating_unit_type'
     ],
     'messages' => [
-        'name.unique'   => '机组编号已存在',
+        'name.unique'   => '机组型号已存在',
         'name.required' => '不能为空',
     ],
 ];
