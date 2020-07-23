@@ -21,18 +21,18 @@ class InstockdetailsController extends Controller
 	{
 
         $detail->fill($request->all());
-        $generating_unit_no = $request->input('generating_unit_no');
-        $set=DB::table('settings')->where('generating_unit_no', $generating_unit_no)->first();
-        $stock=DB::table('stocks')->where('generating_unit_no',$generating_unit_no)->first();
+        $generating_unit_type = $request->input('generating_unit_type');
+        $set=DB::table('settings')->where('generating_unit_type', $generating_unit_type)->first();
+        $stock=DB::table('stocks')->where('generating_unit_type',$generating_unit_type)->first();
         if(!$set){
-            session()->flash('warning', '机组编号不存在！');
+            session()->flash('warning', '机组型号不存在！');
             return redirect()->route('instocks.index');
         }elseif (!$stock) {
-            session()->flash('warning', '物品库存中不存在该机组编号，请先录入物品库存中！');
+            session()->flash('warning', '物品库存中不存在该机组型号，请先录入物品库存中！');
             return redirect()->route('instocks.index');
         }
         $detail->product_type=$set->product_type;
-        $detail->generating_unit_type=$set->generating_unit_type;
+
         $detail->power=$set->power;
         $detail->phases_number=$set->phases_number;
         $detail->unit=$set->unit;
@@ -52,7 +52,7 @@ class InstockdetailsController extends Controller
 	public function destroy(Instockdetail $instockdetail)
 	{
 		$this->authorize('destroy', $instockdetail);
- $stock=DB::table('stocks')->where('generating_unit_no',$instockdetail->generating_unit_no)->first();
+ $stock=DB::table('stocks')->where('generating_unit_type',$instockdetail->generating_unit_type)->first();
     if($stock->inventory_quantity-$instockdetail->warehousing_count<0){
 session()->flash('warning', '库存不足无法删除该入库明细！');
             return redirect()->route('instocks.index');

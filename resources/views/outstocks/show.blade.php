@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-  <div class="col-md-10 offset-md-1">
+  <div class="col-md-12 ">
     <div class="card ">
       <div class="card-header">
         <h1>出库单 outstock / 信息 information </h1>
@@ -52,12 +52,12 @@
             <thead>
               <tr>
 
-                <th>日期</th> <th>订单编号</th><th>客户名称</th><th>业务员</th> <th>机组编号</th><th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>出库数量</th><th>库存单价</th><th>金额</th><th>备注</th><th>操作</th>
+                <th>日期</th> <th>订单编号</th><th>客户名称</th><th>业务员</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>出库数量</th><th>库存单价</th><th>金额</th><th>备注</th><th>操作</th>
               </tr>
 
                  <tr>
 
-                <th>date</th> <th>order_id</th><th>customer_name</th><th>saleman</th> <th>generating_unit_no</th><th>product_type</th><th>generating_unit_type</th><th>power</th><th>phases_number</th><th>unit</th> <th>out_count</th><th>warehousing_price</th><th>amount</th><th>remark</th><th>option</th>
+               <th>date</th> <th>order_id</th><th>client_name</th><th>sales</th> <th>unit_type</th><th>unit_model</th><th>power</th><th>phase</th><th>unit</th> <th>out_count</th><th>warehousing_price</th><th>amount</th><th>remark</th><th>option</th>
               </tr>
             </thead>
 

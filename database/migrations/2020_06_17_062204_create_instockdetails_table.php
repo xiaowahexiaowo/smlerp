@@ -11,7 +11,7 @@ class CreateInstockdetailsTable extends Migration
             $table->increments('id');
             $table->datetime('in_date');
             $table->integer('stock_id')->unsigned();
-            $table->string('generating_unit_no');
+
             $table->string('product_type');
             $table->string('generating_unit_type');
             $table->string('power');

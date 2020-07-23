@@ -29,12 +29,12 @@
             <thead>
               <tr>
 
-                <th>日期</th> <th>入库编号</th> <th>机组编号</th><th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th>
+                <th>日期</th> <th>入库编号</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th>
               </tr>
 
                       <tr>
 
-                <th>date</th> <th>Instock id</th> <th>generating_unit_no</th><th>product_type</th><th>generating_unit_type</th><th>power</th><th>phases_number</th><th>unit</th> <th>warehousing_count</th><th>price</th><th>stock_amount</th><th>stock_man</th><th>remark</th>
+                <th>date</th> <th>Instock id</th><th>unit_type</th><th>unit_model</th><th>power</th><th>phase</th><th>unit</th> <th>warehousing_count</th><th>price</th><th>stock_amount</th><th>stock_man</th><th>remark</th>
               </tr>
             </thead>
 

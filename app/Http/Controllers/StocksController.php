@@ -34,14 +34,14 @@ class StocksController extends Controller
 	public function store(StockRequest $request,Stock $stock)
 	{
 		$stock->fill($request->all());
-        $generating_unit_no = $request->input('generating_unit_no');
-        $set=DB::table('settings')->where('generating_unit_no', $generating_unit_no)->first();
+        $generating_unit_type = $request->input('generating_unit_type');
+        $set=DB::table('settings')->where('generating_unit_type', $generating_unit_type)->first();
         if(!$set){
-            session()->flash('warning', '机组编号不存在！');
+            session()->flash('warning', '机组型号不存在！');
             return redirect()->route('orders.index');
         }
          $stock->product_type=$set->product_type;
-         $stock->generating_unit_type=$set->generating_unit_type;
+
          $stock->power=$set->power;
          $stock->phases_number=$set->phases_number;
          $stock->unit=$set->unit;
@@ -78,8 +78,8 @@ class StocksController extends Controller
 		$this->authorize('destroy', $stock);
 
         // 删除之前  判断下该机组有无出入库明细  若有 则不能删除
-$instockdetail=DB::table('instockdetails')->where('generating_unit_no', $stock->generating_unit_no)->first();
-$outstockdetail=DB::table('outstockdetails')->where('generating_unit_no', $stock->generating_unit_no)->first();
+$instockdetail=DB::table('instockdetails')->where('generating_unit_type', $stock->generating_unit_type)->first();
+$outstockdetail=DB::table('outstockdetails')->where('generating_unit_type', $stock->generating_unit_type)->first();
 if($instockdetail||$outstockdetail){
    session()->flash('warning', '出入库单有该机组明细时，禁止删除！');
             return redirect()->route('stocks.index');

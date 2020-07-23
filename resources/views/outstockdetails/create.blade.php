@@ -30,8 +30,8 @@
 
 
                 <div class="form-group">
-                	<label for="generating_unit_no-field">机组编号generating_unit_no</label>
-                	<input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value="" />
+                	<label for="generating_unit_type-field">机组编号generating_unit_type</label>
+                	<input class="form-control" type="text" name="generating_unit_type" id="generating_unit_type-field" value="" />
                 </div>
 
                 <div class="form-group">

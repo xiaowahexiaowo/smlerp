@@ -12,7 +12,6 @@ class CreateOutstockdetailsTable extends Migration
             $table->integer('stock_id');
             $table->datetime('out_date');
 
-            $table->string('generating_unit_no');
             $table->string('product_type');
             $table->string('generating_unit_type');
             $table->string('power');
