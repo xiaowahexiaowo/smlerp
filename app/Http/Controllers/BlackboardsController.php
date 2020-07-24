@@ -52,7 +52,7 @@ class BlackboardsController extends Controller
 		$this->authorize('update', $blackboard);
 		$blackboard->update($request->all());
 session()->flash('success', '小黑板更新成功！');
-		return redirect()->route('blackboards.show', $blackboard->id);
+		return redirect()->route('blackboards.index', $blackboard->id);
 	}
 
 	public function destroy(Blackboard $blackboard)
