@@ -54,7 +54,7 @@
         <p>
                   {!! $order->appendix !!}
               </p>
-
+      <p>客户地址：{{$order->address}} 客户邮箱：{{$order->email}}  客户电话:{{$order->phone}}</p>
 
         <br>
  <table class="table table-sm table-striped">

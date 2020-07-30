@@ -17,6 +17,10 @@ class CreateOrdersTable extends Migration
             $table->text('customer_name');
             $table->integer('user_id')->unsigned()->index();
             $table->string('payment_type');
+            $table->string('email');
+            $table->string('address');
+            $table->integer('phone')->unsigned();
+
             $table->float('total_cost',10,2);
             $table->string('payment_method');
             $table->string('remark');

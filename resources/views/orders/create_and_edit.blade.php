@@ -78,6 +78,21 @@
                 <input class="form-control" type="text" name="customer_name" id="customer_name-field" value="{{ old('customer_name', $order->customer_name) }}"  required />
                 </div>
 
+                  <div class="form-group">
+                  <label for="address-field">客户地址client_address</label>
+                <input class="form-control" type="text" name="address" id="address-field" value="{{ old('address', $order->address) }}"  required />
+                </div>
+
+                  <div class="form-group">
+                  <label for="email-field">客户邮箱client_mail</label>
+                <input class="form-control" type="text" name="email" id="email-field" value="{{ old('email', $order->email) }}"  required />
+                </div>
+
+                        <div class="form-group">
+                  <label for="phone-field">客户电话client_tel</label>
+                <input class="form-control" type="text" name="phone" id="phone-field" value="{{ old('phone', $order->phone) }}"  required />
+                </div>
+
                 <div class="form-group">
                 	<label for="payment_type-field">支付类别payment_type</label>
                 	         <select class="form-control" name="payment_type" required>

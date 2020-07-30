@@ -69,6 +69,8 @@ class OrdersController extends Controller
             if ($result) {
                 $order['avatar'] = $result['path'];
             }
+        }else{
+            $order['avatar']="";
         }
         $order->save();
         session()->flash('success', '创建成功');
@@ -81,7 +83,7 @@ class OrdersController extends Controller
 		return view('orders.create_and_edit', compact('order'));
 	}
 
-	public function update(OrderRequest $request, Order $order)
+	public function update(OrderRequest $request, Order $order, FileUploadHandler $uploader)
 	{
 // 审核和编辑  共用update
         if($request->input('order_state')!='待审核'&&$request->input('order_state')!=''){
@@ -124,6 +126,17 @@ class OrdersController extends Controller
             // 优化后
             $order->fill($request->all());
             $order->fill(['arrears'=>$arrears])->save();
+
+        }
+        // 上传了文件则更新文件路径
+        // dd($request->file('avatar'));
+        // dd($request->avatar);
+        if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', 'file');
+            if ($result) {
+
+              $order->fill(['avatar'=>$result['path']])->save();
+            }
 
         }
         session()->flash('success', '修改成功！');
@@ -210,7 +223,7 @@ session()->flash('success', '删除成功');
     {
           // 判断文件是否存在
         if(!file_exists($order->avatar)){
-            session()->flash('warning', '文件不存在！'.$order->avatar);
+            session()->flash('warning', '文件不存在！');
             return redirect()->route('orders.show', $order->id);
          }
 
