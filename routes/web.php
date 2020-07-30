@@ -62,3 +62,5 @@ Route::resource('blackboards', 'BlackboardsController', ['only' => ['index', 'sh
 Route::resource('schedules', 'SchedulesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+// // 订单文件下载
+ Route::get('orders/{order}/order_download','OrdersController@download')->name('orders.download');

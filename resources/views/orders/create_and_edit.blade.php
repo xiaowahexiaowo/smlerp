@@ -20,10 +20,10 @@
 
       <div class="card-body">
         @if($order->id)
-          <form action="{{ route('orders.update', $order->id) }}" method="POST" accept-charset="UTF-8">
+          <form action="{{ route('orders.update', $order->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
           <input type="hidden" name="_method" value="PUT">
         @else
-          <form action="{{ route('orders.store') }}" method="POST" accept-charset="UTF-8">
+          <form action="{{ route('orders.store') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
         @endif
 
           @include('common.error')
@@ -124,6 +124,14 @@
                 	<label for="appendix-field">附件appendix</label>
                 	<textarea name="appendix" id="appendix-field" class="form-control" rows="3"  required >{{ old('appendix', $order->appendix ) }}</textarea>
                 </div>
+
+                <div class="form-group mb-4">
+                  <label for="" class="avatar-label">文件上传</label>
+                  <input type="file" name="avatar" class="form-control-file" >
+
+
+          </div>
+
 
                     <div class="form-group">
                   <label for="remark-field">备注remark</label>

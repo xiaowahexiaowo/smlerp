@@ -11,6 +11,9 @@ use App\Handlers\ImageUploadHandler;
 use App\Exports\OrdersExport;
 use App\Models\User;
 use App\Notifications\OrderCheck;
+use App\Handlers\FileUploadHandler;
+
+use Illuminate\Support\Facades\Storage;
 class OrdersController extends Controller
 {
     public function __construct()
@@ -50,7 +53,7 @@ class OrdersController extends Controller
         return view('orderdetails.create', compact('orders'));
     }
 
-	public function store(OrderRequest $request,Order $order)
+	public function store(OrderRequest $request,Order $order, FileUploadHandler $uploader)
 	{
 		// $order = Order::create($request->all());
         $order->fill($request->all());
@@ -60,6 +63,13 @@ class OrdersController extends Controller
         $order->order_detail_id=0;//应该是搞成数组 存订单详情的id来着  这里先不动
         $order->arrears=0;
         //尚欠金额=订单总金额-支付金额-2307可抵免税款     因为创建订单时，订单详情还没填写，所以尚欠金额创建时设为0 当订单详情填写后动态更改尚欠金额。  会有很多bug 如之后更改金额
+
+         if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', 'file');
+            if ($result) {
+                $order['avatar'] = $result['path'];
+            }
+        }
         $order->save();
         session()->flash('success', '创建成功');
 		return redirect()->route('orders.show', $order->id);
@@ -74,7 +84,7 @@ class OrdersController extends Controller
 	public function update(OrderRequest $request, Order $order)
 	{
 // 审核和编辑  共用update
-        if($request->input('order_state')!='待审核'){
+        if($request->input('order_state')!='待审核'&&$request->input('order_state')!=''){
 
                $order->update($request->all());
 
@@ -194,5 +204,20 @@ session()->flash('success', '删除成功');
     public function check(Order $order){
             $this->authorize('check', $order);
         return view('orders.check', compact('order'));
+    }
+// 下载订单中的文件
+     public function download(Order $order)
+    {
+          // 判断文件是否存在
+        if(!file_exists($order->avatar)){
+            session()->flash('warning', '文件不存在！'.$order->avatar);
+            return redirect()->route('orders.show', $order->id);
+         }
+
+
+        return response()->download($order->avatar);
+
+        // return Storage::download($order->avatar, '销售单文件下载');
+
     }
 }

@@ -16,7 +16,9 @@
               <a class="btn btn-link" href="{{ route('orders.index') }}"><- 返回back</a>
             </div>
             <div class="col-md-6">
-
+            <a href="{{route('orders.download',$order->id)}}" class="btn btn-large pull-right">
+            <i class="btn btn-success">文件下载 </i>
+        </a>
             </div>
           </div>
         </div>
@@ -52,6 +54,7 @@
         <p>
                   {!! $order->appendix !!}
               </p>
+
 
         <br>
  <table class="table table-sm table-striped">

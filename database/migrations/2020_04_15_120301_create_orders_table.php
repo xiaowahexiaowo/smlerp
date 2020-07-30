@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->string('order_state')->index();
             $table->integer('order_detail_id')->unsigned()->index();
             $table->text('appendix');
+            $table->string('avatar');
             $table->timestamps();
         });
 	}
