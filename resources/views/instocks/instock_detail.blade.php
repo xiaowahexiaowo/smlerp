@@ -29,7 +29,7 @@
             <thead>
               <tr>
 
-                <th>日期</th> <th>入库编号</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th>
+                <th>日期</th> <th>入库编号</th><th>机组编号</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th>
               </tr>
 
                       <tr>

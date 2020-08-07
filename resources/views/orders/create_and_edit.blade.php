@@ -66,10 +66,10 @@
                   <option value="" hidden disabled {{ $order->id ? '' : 'selected' }}>请选择分类</option>
 
                       <option value="开票" {{ $order->order_ticket == '开票' ? 'selected' : '' }}>
-                        开票draw a bill
+                        开票vat in
                       </option>
                        <option value="不开票" {{ $order->order_ticket == '不开票' ? 'selected' : '' }}>
-                        不开票not draw a bill
+                        不开票vat ex
                       </option>
                 </select>
                 </div>

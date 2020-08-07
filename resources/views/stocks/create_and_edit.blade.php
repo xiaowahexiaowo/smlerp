@@ -31,8 +31,8 @@
 
 
                 <div class="form-group">
-                	<label for="generating_unit_type-field">机组型号generating_unit_type</label>
-                	<input class="form-control" type="text" name="generating_unit_type" id="generating_unit_type-field" value="{{ old('generating_unit_type', $stock->generating_unit_type ) }}" required />
+                	<label for="generating_unit_no-field">机组编号generating_unit_no</label>
+                	<input class="form-control" type="text" name="generating_unit_no" id="generating_unit_no-field" value="{{ old('generating_unit_no', $stock->generating_unit_no ) }}" required />
                 </div>
 
                 <div class="form-group">

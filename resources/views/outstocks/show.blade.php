@@ -52,7 +52,7 @@
             <thead>
               <tr>
 
-                <th>日期</th> <th>订单编号</th><th>客户名称</th><th>业务员</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>出库数量</th><th>库存单价</th><th>金额</th><th>备注</th><th>操作</th>
+                <th>日期</th> <th>机组编号</th><th>客户名称</th><th>业务员</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>出库数量</th><th>库存单价</th><th>金额</th><th>备注</th><th>操作</th>
               </tr>
 
                  <tr>
@@ -67,7 +67,7 @@
                 @if($loop->first)
               <tr>
 
-                                    <td>{{$outstock->out_date}}</td><td>{{$outstock->order_id}}</td><td>{{$outstock->customer_name}}</td><td>{{$outstock->user_name}}</td><td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->out_count}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->amount}}</td><td>{{$detail->remark}}</td> <td  class="text-xs-right">
+                                    <td>{{$outstock->out_date}}</td><td>{{$detail->generating_unit_no}}</td><td>{{$outstock->customer_name}}</td><td>{{$outstock->user_name}}</td><td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->out_count}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->amount}}</td><td>{{$detail->remark}}</td> <td  class="text-xs-right">
                    <form action="{{ route('outstockdetails.destroy', $detail->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="DELETE">

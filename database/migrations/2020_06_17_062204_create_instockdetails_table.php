@@ -11,11 +11,11 @@ class CreateInstockdetailsTable extends Migration
             $table->increments('id');
             $table->datetime('in_date');
             $table->integer('stock_id')->unsigned();
-
+            $table->string('generating_unit_no')->unique();
             $table->string('product_type');
             $table->string('generating_unit_type');
             $table->string('power');
-            $table->integer('phases_number');
+            $table->string('phases_number');
             $table->string('unit');
             $table->integer('warehousing_count')->unsigned();
             $table->float('warehousing_price',10,2);

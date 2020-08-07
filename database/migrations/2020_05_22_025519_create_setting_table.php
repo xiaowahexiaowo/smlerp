@@ -16,11 +16,11 @@ class CreateSettingTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-
+            $table->string('generating_unit_no')->unique();
             $table->string('product_type');
-            $table->string('generating_unit_type')->unique();
+            $table->string('generating_unit_type');
             $table->string('power');
-            $table->integer('phases_number');
+            $table->string('phases_number');
             $table->string('unit');
             $table->float('warehousing_price',10,2);
         });

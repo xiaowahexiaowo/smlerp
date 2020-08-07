@@ -9,7 +9,7 @@ class CreateOrdersTable extends Migration
 	{
 		Schema::create('orders', function(Blueprint $table) {
             $table->increments('id');
-            // $table->integer('order_no')->unique()->unsigned();
+
             $table->string('order_id')->unique();
             $table->string('order_type');
             $table->datetime('order_date');
@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('payment_type');
             $table->string('email');
             $table->string('address');
-            $table->integer('phone')->unsigned();
+            $table->string('phone');
 
             $table->float('total_cost',10,2);
             $table->string('payment_method');
