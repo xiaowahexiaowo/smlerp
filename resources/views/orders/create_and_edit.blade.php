@@ -53,6 +53,9 @@
                       <option value="赊销订单" {{ $order->order_type == '赊销订单' ? 'selected' : '' }}>
                         赊销订单sales on account order
                       </option>
+                       <option value="退回订单" {{ $order->order_type == '退回订单' ? 'selected' : '' }}>
+                        退回订单sales return order
+                      </option>
 
                 </select>
                 </div>
@@ -141,11 +144,9 @@
                 </div>
 
                 <div class="form-group mb-4">
-                  <label for="" class="avatar-label">文件上传</label>
+                  <label for="" class="avatar-label">文件上传PO-Upload</label>
                   <input type="file" name="avatar" class="form-control-file" >
-
-
-          </div>
+                </div>
 
 
                     <div class="form-group">

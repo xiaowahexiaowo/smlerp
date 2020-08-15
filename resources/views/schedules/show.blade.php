@@ -15,6 +15,11 @@
             <div class="col-md-6">
               <a class="btn btn-link" href="{{ route('schedules.index') }}"><- 返回back</a>
             </div>
+                  <div class="col-md-6">
+            <a href="{{route('schedules.download',$schedules->id)}}" class="btn btn-large pull-right">
+            <i class="btn btn-success">文件下载 </i>
+        </a>
+            </div>
 
           </div>
         </div>

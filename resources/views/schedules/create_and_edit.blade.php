@@ -57,6 +57,11 @@
                     <textarea name="appendix" id="appendix-field" class="form-control" rows="3"  required >{{ old('appendix', $schedule->appendix ) }}</textarea>
                 </div>
 
+                   <div class="form-group mb-4">
+                  <label for="" class="avatar-label">文件上传PO-Upload</label>
+                  <input type="file" name="avatar" class="form-control-file" >
+                </div>
+
           <div class="well well-sm">
             <button type="submit" class="btn btn-primary">保存save</button>
             <a class="btn btn-link float-xs-right" href="{{ route('schedules.index') }}"> <- 返回back</a>

@@ -7,7 +7,7 @@ use  Illuminate\Support\Str;
 class FileUploadHandler
 {
     // 只允许以下后缀名的文件上传
-    protected $allowed_ext = ["pdf", "doc", "docx","xlsx","xls"];
+    protected $allowed_ext = ["pdf", "doc", "docx","xlsx","xls","zip"];
 
     public function save($file, $folder, $file_prefix)
     {

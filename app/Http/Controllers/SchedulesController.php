@@ -6,7 +6,7 @@ use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ScheduleRequest;
-
+use App\Handlers\FileUploadHandler;
 class SchedulesController extends Controller
 {
     public function __construct()
@@ -36,6 +36,14 @@ class SchedulesController extends Controller
 	public function store(ScheduleRequest $request)
 	{
 		$schedule = Schedule::create($request->all());
+           if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', 'file');
+            if ($result) {
+                $schedule['avatar'] = $result['path'];
+            }
+        }else{
+            $schedule['avatar']="";
+        }
         session()->flash('success', '排产单明细创建成功！');
 		return redirect()->route('schedules.show', $schedule->id);
 	}
@@ -61,4 +69,20 @@ session()->flash('success', '排产单明细更新成功！');
 session()->flash('success', '排产单明细删除成功！');
 		return redirect()->route('schedules.index');
 	}
+
+    // 下载排产发货明细中的文件
+     public function download(Schedule $schedule)
+    {
+          // 判断文件是否存在
+        if(!file_exists($schedule->avatar)){
+            session()->flash('warning', '文件不存在！');
+            return redirect()->route('schedules.show', $schedule->id);
+         }
+
+
+        return response()->download($schedule->avatar);
+
+        // return Storage::download($order->avatar, '销售单文件下载');
+
+    }
 }

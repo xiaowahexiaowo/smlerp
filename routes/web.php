@@ -64,3 +64,5 @@ Route::resource('schedules', 'SchedulesController', ['only' => ['index', 'show',
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 // // 订单文件下载
  Route::get('orders/{order}/order_download','OrdersController@download')->name('orders.download');
+ // 排产发货明细文件下载
+  Route::get('schedules/{schedule}/schedule_download','SchedulesController@download')->name('schedules.download');
