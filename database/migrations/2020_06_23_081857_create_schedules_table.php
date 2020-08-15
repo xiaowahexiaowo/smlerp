@@ -12,8 +12,9 @@ class CreateSchedulesTable extends Migration
             //排产单号
             $table->string('schedules_id');
             // 排产状态
-            $table->string('schedules_state');
+            $table->string('schedules_state')->unique();
             $table->string('appendix');
+            $table->string('avatar');
             $table->timestamps();
         });
 	}

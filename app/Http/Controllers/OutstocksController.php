@@ -40,12 +40,18 @@ class OutstocksController extends Controller
         $order_id=$request->input('order_id');
 
         $order=Order::where('order_id',$order_id)->first();
+        if($request->input('out_stock_type')=='其它出库'){
+              $outstock->customer_name='其它出库';
+              $outstock->user_name='其它出库';
+              $outstock->save();
+         session()->flash('success', '出库单创建成功！');
+        return redirect()->route('outstocks.show', $outstock->id);
+        }
         if (!$order) {
                session()->flash('warning', '订单编号不存在！');
             return redirect()->route('outstocks.index');
         }
         $outstock->customer_name=$order->customer_name;
-
         $outstock->user_name=$order->user->name;
         $outstock->save();
          session()->flash('success', '出库单创建成功！');

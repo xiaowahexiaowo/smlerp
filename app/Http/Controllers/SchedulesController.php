@@ -33,9 +33,11 @@ class SchedulesController extends Controller
 		return view('schedules.create_and_edit', compact('schedule'));
 	}
 
-	public function store(ScheduleRequest $request)
+	public function store(ScheduleRequest $request, Schedule $schedule,FileUploadHandler $uploader)
 	{
-		$schedule = Schedule::create($request->all());
+
+
+            $schedule->fill($request->all());
            if ($request->avatar) {
             $result = $uploader->save($request->avatar, 'avatars', 'file');
             if ($result) {
@@ -44,6 +46,7 @@ class SchedulesController extends Controller
         }else{
             $schedule['avatar']="";
         }
+        $schedule->save();
         session()->flash('success', '排产单明细创建成功！');
 		return redirect()->route('schedules.show', $schedule->id);
 	}
@@ -58,6 +61,16 @@ class SchedulesController extends Controller
 	{
 		$this->authorize('update', $schedule);
 		$schedule->update($request->all());
+          // 上传了文件则更新文件路径
+
+        if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', 'file');
+            if ($result) {
+
+              $schedule->fill(['avatar'=>$result['path']])->save();
+            }
+
+        }
 session()->flash('success', '排产单明细更新成功！');
 		return redirect()->route('schedules.show', $schedule->id);
 	}

@@ -16,7 +16,7 @@
               <a class="btn btn-link" href="{{ route('schedules.index') }}"><- 返回back</a>
             </div>
                   <div class="col-md-6">
-            <a href="{{route('schedules.download',$schedules->id)}}" class="btn btn-large pull-right">
+            <a href="{{route('schedules.download',$schedule->id)}}" class="btn btn-large pull-right">
             <i class="btn btn-success">文件下载 </i>
         </a>
             </div>
@@ -28,11 +28,11 @@
             <thead>
              <tr>
                 <th class="text-xs-center">#</th>
-                <th>排产单号</th> <th>排产单状态</th> <th class="text-xs-right">操作</th>
+                <th>排产单号</th> <th>排产单状态</th>
               </tr>
               <tr>
                 <th class="text-xs-center">#</th>
-                <th>schedules_id</th> <th>schedules_state</th> <th class="text-xs-right">option</th>
+                <th>schedules_id</th> <th>schedules_state</th>
               </tr>
             </thead>
 

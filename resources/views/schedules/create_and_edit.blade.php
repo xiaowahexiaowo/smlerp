@@ -19,10 +19,10 @@
 
       <div class="card-body">
         @if($schedule->id)
-          <form action="{{ route('schedules.update', $schedule->id) }}" method="POST" accept-charset="UTF-8">
-          <input type="hidden" name="_method" value="PUT">
+          <form action="{{ route('schedules.update', $schedule->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+          <input type="hidden" name="_method" value="PUT" >
         @else
-          <form action="{{ route('schedules.store') }}" method="POST" accept-charset="UTF-8">
+          <form action="{{ route('schedules.store') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
         @endif
 
           @include('common.error')
