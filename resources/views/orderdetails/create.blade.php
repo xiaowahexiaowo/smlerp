@@ -27,7 +27,7 @@
           <input type="hidden" name="order_id" value="{{ $orders->order_id}}">
 
                 <div class="form-group">
-                    <label for="generating_unit_type-field">机组型号generating_unit_type</label>
+                    <label for="generating_unit_type-field">机组型号 或者配件编号generating_unit_type  or Part number</label>
                     <input class="form-control" type="text" name="generating_unit_type" id="generating_unit_type-field" value=""  required />
                 </div>
                 <div class="form-group">
