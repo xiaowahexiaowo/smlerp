@@ -31,12 +31,17 @@ Route::resource('orderdetails', 'OrderdetailsController', ['only' => ['index', '
 
 Route::post('upload_image', 'OrdersController@uploadImage')->name('orders.upload_image');
 
-Route::resource('collecteds', 'CollectedsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('collecteds', 'CollectedsController', ['only' => ['show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('collecteds/{date_begin?}{date_end?}','CollectedsController@index')->name('collecteds.index');
+
 Route::resource('receivables', 'ReceivablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::get('exportreceivablesdetail','ReceivablesController@export')->name('exports.receivablesdetails');
 //
-Route::resource('stocks', 'StocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('stocks', 'StocksController', ['only' => ['show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::get('stocks/{date_begin?}{date_end?}','StocksController@index')->name('stocks.index');
 
 Route::resource('instocks', 'InstocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StockRequest;
 use Illuminate\Support\Facades\DB;
+use App\Exports\StocksExport;
 class StocksController extends Controller
 {
     public function __construct()
@@ -14,9 +15,16 @@ class StocksController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     // 都有查看权限
-	public function index()
+	public function index(StockRequest $request)
 	{
-		$stocks = Stock::paginate(30);
+        $date_begin=$request->input('date_begin');
+        $date_end=$request->input('date_end');
+        if($date_begin&&$date_end){
+           $stocks = Stock::whereBetween('created_at',[$date_begin,$date_end])->paginate(30);
+        }else{
+            $stocks = Stock::paginate(30);
+        }
+
 		return view('stocks.index', compact('stocks'));
 	}
 
@@ -89,4 +97,11 @@ if($instockdetail||$outstockdetail){
         session()->flash('success', '删除成功！');
 		return redirect()->route('stocks.index');
 	}
+
+
+         public function export()
+    {
+
+         return (new StocksExport)->download('物品库存统计.xlsx');
+    }
 }

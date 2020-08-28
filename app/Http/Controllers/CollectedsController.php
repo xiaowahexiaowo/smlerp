@@ -9,6 +9,7 @@ use App\Http\Requests\CollectedRequest;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Models\User;
+use App\Exports\CollectedsExport;
 class CollectedsController extends Controller
 {
     public function __construct()
@@ -16,13 +17,21 @@ class CollectedsController extends Controller
         $this->middleware('auth', ['except' => ['show']]);
     }
 
-	public function index(Collected $collected)
+	public function index(Collected $collected,CollectedRequest $request)
 	{
         $this->authorize('index',$collected);
         $user=Auth::user();
+           $date_begin=$request->input('date_begin');
+        $date_end=$request->input('date_end');
          // 财务和管理员查看的是所有
         if(!$user->hasRole('Flb_saleman')){
-           $collecteds = Collected::paginate(30);
+            if($date_begin&&$date_end){
+              $collecteds = Collected::whereBetween('collection_date',[$date_begin,$date_end])->paginate(30);
+            }else{
+
+                $collecteds = Collected::paginate(30);
+            }
+
         }else{
             $orders=$user->orders()->get();
 
@@ -144,6 +153,12 @@ session()->flash('success', '收款明细删除成功！');
 
 		return redirect()->route('collecteds.index');
 	}
+
+             public function export()
+    {
+
+         return (new CollectedsExport)->download('收款明细.xlsx');
+    }
 }
 
 

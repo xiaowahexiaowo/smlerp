@@ -33,6 +33,8 @@ class OrdersExport implements FromView
             $orders = Order::where('order_state','!=','待审核')->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);
         }
 
+
+
                 return view('exports.orderdetails'
                     , [
                     // Order::with('orderdetails','user')

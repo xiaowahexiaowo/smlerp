@@ -9,6 +9,22 @@
           收款明细 collected detail
           <a class="btn btn-success float-xs-right" href="{{ route('collecteds.create') }}">创建 create</a>
         </h1>
+                <h1>
+       <!-- 这里编写查询 -->
+          <a class="btn btn-success float-xs-right" href="{{ route('collecteds.export') }}">导出Excel export Excel</a>
+            </h1>
+          <form action="{{ route('collecteds.index') }}" method="GET" style="display: inline;">
+                    {{csrf_field()}}
+
+
+
+                <label for="date_begin-field">起始日期begin date</label>
+                    <input class="" type="text" name="date_begin" id="date_begin" value="" />
+                     <label for="date_end-field">截止日期end date</label>
+                    <input class="" type="text" name="date_end" id="date_end" value="" />
+
+                    <button type="submit" class="btn btn-sm btn-danger">查询 query</button>
+          </form>
       </div>
 
       <div class="card-body">

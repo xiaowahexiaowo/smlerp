@@ -52,12 +52,12 @@
             <thead>
               <tr>
 
-                <th>日期</th> <th>入库编号</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th><th>操作</th>
+                <th>日期</th> <th>入库编号</th><th>机组编号</th> <th>产品类型</th><th>机组型号</th><th>功率</th><th>相数</th><th>单位</th> <th>入库数量</th><th>库存单价</th><th>金额</th><th>入库人</th><th>备注</th><th>操作</th>
               </tr>
 
                  <tr>
 
-              <th>date</th> <th>Instock id</th><th>unit_type</th><th>unit_model</th><th>power</th><th>phase</th><th>unit</th> <th>warehousing_count</th><th>price</th><th>stock_amount</th><th>stock_man</th><th>remark</th><th>option</th>
+              <th>date</th> <th>Instock id</th><th>unit_no</th><th>unit_type</th><th>unit_model</th><th>power</th><th>phase</th><th>unit</th> <th>warehousing_count</th><th>price</th><th>stock_amount</th><th>stock_man</th><th>remark</th><th>option</th>
               </tr>
             </thead>
 
@@ -67,7 +67,7 @@
 
               <tr>
 
-                                    <td>{{$detail->in_date}}</td><td>{{$detail->stock_id}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_count}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->stock_amount}}</td><td>{{$detail->stock_man}}</td><td>{{$detail->remark}}</td>
+                                    <td>{{$detail->in_date}}</td><td>{{$detail->stock_id}}</td><td>{{$detail->generating_unit_no}}</td><td>{{$detail->product_type}}</td><td>{{$detail->generating_unit_type}}</td><td>{{$detail->power}}</td><td>{{$detail->phases_number}}</td><td>{{$detail->unit}}</td><td>{{$detail->warehousing_count}}</td><td>{{$detail->warehousing_price}}</td><td>{{$detail->stock_amount}}</td><td>{{$detail->stock_man}}</td><td>{{$detail->remark}}</td>
                                      <td  class="text-xs-right">
                    <form action="{{ route('instockdetails.destroy', $detail->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
                     {{csrf_field()}}

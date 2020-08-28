@@ -31,7 +31,7 @@
                     <input class="form-control" type="text" name="generating_unit_type" id="generating_unit_type-field" value=""  required />
                 </div>
                 <div class="form-group">
-                    <label for="count-field">出库数量count</label>
+                    <label for="count-field">数量count</label>
                     <input class="form-control" type="text" name="count" id="count-field" value=""  required />
                 </div>
                 <div class="form-group">
