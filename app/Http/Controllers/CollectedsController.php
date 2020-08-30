@@ -158,8 +158,9 @@ session()->flash('success', '收款明细删除成功！');
 		return redirect()->route('collecteds.index');
 	}
 
-             public function export()
+             public function export(Collected $collected)
     {
+         $this->authorize('export',$collected);
 
          return (new CollectedsExport)->download('收款明细.xlsx');
     }

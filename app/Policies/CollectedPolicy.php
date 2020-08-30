@@ -30,5 +30,13 @@ class CollectedPolicy extends Policy
          return $user->hasRole('Treasurer');
     }
 
+          public function export(User $user, Collected $collected){
+
+
+
+          return $user->hasRole('Treasurer');
+
+    }
+
 
 }

@@ -21,5 +21,13 @@ class StockPolicy extends Policy
     {
         return $user->hasRole('Storekeeper');
     }
+
+          public function export(User $user, Stock $stock){
+
+
+
+          return $user->hasRole('Treasurer');
+
+    }
 }
 

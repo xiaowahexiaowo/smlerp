@@ -4,39 +4,61 @@
   <!--   <a class="navbar-brand " href="{{ url('/') }}">
     SmlErp
     </a> -->
-    <a class="navbar-brand " href="{{ url('/orders') }}">
+    <li class="navbar-brand {{ active_class(if_route('orders.index')) }} ">
+       <a  href="{{ url('/orders') }}">
     销售单order
     </a>
-    <a class="navbar-brand " href="{{ route('orders.order_detail') }}">
+    </li>
+<li class="navbar-brand {{ active_class(if_route('orders.order_detail')) }} ">
+    <a href="{{ route('orders.order_detail') }}">
     销售单明细orderdetail
     </a>
-    <a class="navbar-brand " href="{{ route('collecteds.index') }}">
+  </li>
+    <li class="navbar-brand {{ active_class(if_route('collecteds.index')) }} ">
+    <a  href="{{ route('collecteds.index') }}">
     收款明细
     </a>
-      <a class="navbar-brand " href="{{ route('receivables.index') }}">
+  </li>
+    <li class="navbar-brand {{ active_class(if_route('receivables.index')) }} ">
+      <a href="{{ route('receivables.index') }}">
     应收账款统计
     </a>
-         <a class="navbar-brand " href="{{ route('stocks.index') }}">
+  </li>
+    <li class="navbar-brand {{ active_class(if_route('stocks.index')) }} ">
+         <a  href="{{ route('stocks.index') }}">
     物品库存统计
     </a>
-     <a class="navbar-brand " href="{{ route('instocks.index') }}">
+  </li>
+  <li class="navbar-brand {{ active_class(if_route('instocks.index')) }} ">
+     <a  href="{{ route('instocks.index') }}">
     入库单
     </a>
-     <a class="navbar-brand " href="{{ route('instocks.instock_detail') }}">
+  </li>
+   <li class="navbar-brand {{ active_class(if_route('instocks.instock_detail')) }} ">
+     <a  href="{{ route('instocks.instock_detail') }}">
     入库明细
     </a>
-      <a class="navbar-brand " href="{{ route('outstocks.index') }}">
+  </li>
+   <li class="navbar-brand {{ active_class(if_route('outstocks.index')) }} ">
+      <a  href="{{ route('outstocks.index') }}">
     出库单
     </a>
-    <a class="navbar-brand " href="{{ route('outstocks.outstock_detail') }}">
+  </li>
+   <li class="navbar-brand {{ active_class(if_route('outstocks.outstock_detail')) }} ">
+    <a  href="{{ route('outstocks.outstock_detail') }}">
     出库明细
     </a>
-    <a class="navbar-brand " href="{{ route('blackboards.index') }}">
+  </li>
+  <li class="navbar-brand {{ active_class(if_route('blackboards.index')) }} ">
+    <a  href="{{ route('blackboards.index') }}">
     小黑板stock
     </a>
-     <a class="navbar-brand " href="{{ route('schedules.index') }}">
+  </li>
+    <li class="navbar-brand {{ active_class(if_route('schedules.index')) }} ">
+     <a href="{{ route('schedules.index') }}">
     排产单schedules
     </a>
+  </li>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>

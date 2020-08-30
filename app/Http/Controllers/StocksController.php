@@ -101,9 +101,9 @@ if($instockdetail||$outstockdetail){
 	}
 
 
-         public function export()
+         public function export(Stock $stock)
     {
-
+          $this->authorize('export',$stock);
          return (new StocksExport)->download('物品库存统计.xlsx');
     }
 }
