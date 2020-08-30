@@ -19,6 +19,8 @@ class StocksController extends Controller
 	{
         $date_begin=$request->input('date_begin');
         $date_end=$request->input('date_end');
+         // 保存查询参数  供导出时使用
+        $request->flash();
         if($date_begin&&$date_end){
            $stocks = Stock::whereBetween('created_at',[$date_begin,$date_end])->paginate(30);
         }else{

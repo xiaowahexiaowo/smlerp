@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Collected;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CollectedRequest;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +24,9 @@ class CollectedsController extends Controller
         $user=Auth::user();
            $date_begin=$request->input('date_begin');
         $date_end=$request->input('date_end');
+
+         // 保存查询参数  供导出时使用
+        $request->flash();
          // 财务和管理员查看的是所有
         if(!$user->hasRole('Flb_saleman')){
             if($date_begin&&$date_end){

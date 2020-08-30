@@ -35,6 +35,8 @@ Route::resource('collecteds', 'CollectedsController', ['only' => ['show', 'creat
 
 Route::get('collecteds/{date_begin?}{date_end?}','CollectedsController@index')->name('collecteds.index');
 
+Route::get('exportcollecteds','CollectedsController@export')->name('collecteds.export');
+
 Route::resource('receivables', 'ReceivablesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::get('exportreceivablesdetail','ReceivablesController@export')->name('exports.receivablesdetails');
@@ -42,6 +44,8 @@ Route::get('exportreceivablesdetail','ReceivablesController@export')->name('expo
 Route::resource('stocks', 'StocksController', ['only' => ['show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::get('stocks/{date_begin?}{date_end?}','StocksController@index')->name('stocks.index');
+
+Route::get('exportstocks','StocksController@export')->name('stocks.export');
 
 Route::resource('instocks', 'InstocksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 

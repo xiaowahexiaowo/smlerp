@@ -11,8 +11,7 @@
         </h1>
            <h1>
        <!-- 这里编写查询 -->
-          <a class="btn btn-success float-xs-right" href="{{ route('stock
-          s.export') }}">导出Excel export Excel</a>
+          <a class="btn btn-success float-xs-right" href="{{ route('stocks.export') }}">导出Excel export Excel</a>
             </h1>
           <form action="{{ route('stocks.index') }}" method="GET" style="display: inline;">
                     {{csrf_field()}}
@@ -77,3 +76,17 @@
 </div>
 
 @endsection
+@section('styles')
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+
+@stop
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.zh-CN.min.js') }}"></script>
+  <script>
+   $('#date_begin,#date_end').datepicker({
+    language:"zh-CN"
+   });
+
+  </script>
+  @stop

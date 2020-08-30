@@ -6,8 +6,8 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Request;
-use App\Models\Stocks;
-class StocksExport implements FromView
+use App\Models\Collected;
+class CollectedsExport implements FromView
     {
 
                     use Exportable;
@@ -21,15 +21,19 @@ class StocksExport implements FromView
         $date_begin=Request::old('date_begin');
         $date_end=Request::old('date_end');
 
-        $stocks = Stocks::orderBy('created_at', 'desc')->paginate(30);
+
+      if ($date_begin&&$date_end) {
+             $collecteds = Collected::whereBetween('collection_date',[$date_begin,$date_end])->orderBy('collection_date', 'desc')->paginate(30);
+        }else{
+            $collecteds = Collected::orderBy('collection_date', 'desc')->paginate(30);
+        }
 
 
 
-
-                return view('exports.stocks'
+                return view('exports.collecteds'
                     , [
 
-                        'stocks' => $stocks
+                        'collecteds' => $collecteds
                         ]
                     );
 

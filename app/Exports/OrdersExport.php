@@ -21,6 +21,7 @@ class OrdersExport implements FromView
         $date_begin=Request::old('date_begin');
         $date_end=Request::old('date_end');
 
+
        if($order_type){
             if($date_begin&&$date_end){
                 $orders = Order::where([ ['order_type','=',$order_type],['order_state', '!=', '待审核'], ])->whereBetween('order_date',[$date_begin,$date_end])->with('orderdetails','user')->orderBy('order_date', 'desc')->paginate(30);

@@ -208,8 +208,9 @@ session()->flash('success', '删除成功');
         return view('orders.order_detail', compact('orders'));
     }
 
-     public function export()
+     public function export(Order $order)
     {
+        $this->authorize('export', $order);
 
          return (new OrdersExport)->download('销售明细单.xlsx');
     }

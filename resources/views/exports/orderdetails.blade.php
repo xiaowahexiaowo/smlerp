@@ -9,7 +9,7 @@
 
             <tbody>
               @foreach($orders as $order)
-              @if(Auth::user()->id==$order->order_id)
+
 
                @foreach($order->orderdetails as $detail)
                 @if($loop->first)
@@ -27,7 +27,7 @@
                     </tr>
                  @endif
                 @endforeach
-              @endif
+
               @endforeach
             </tbody>
           </table>

@@ -48,4 +48,12 @@ class OrderPolicy extends Policy
           return $user->can('r_orderdetails');
 
     }
+
+      public function export(User $user, Order $order){
+
+
+
+          return $user->hasRole('Treasurer');
+
+    }
 }
