@@ -98,7 +98,7 @@ class InstocksController extends Controller
 
        public function export()
     {
-        $this->authorize('export', $instock);
+        // $this->authorize('export', $instock);
         // return (new InvoicesExport)->forYear(2018)->download('invoices.xlsx');
         // return Excel::download(new OrdersExport, '销售明细单.xlsx');
          return (new InstocksExport)->download('入库明细.xlsx');

@@ -113,7 +113,7 @@ $this->authorize('showDetail', $outstock);
 
      public function export()
     {
-        $this->authorize('export', $outstock);
+        // $this->authorize('export', $outstock);
 
          return (new OutstocksExport)->download('出库明细.xlsx');
     }
