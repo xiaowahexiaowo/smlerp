@@ -17,12 +17,12 @@
             <thead>
               <tr>
                 <th class="text-xs-center">#</th>
-                 <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>合同总金额</th> <th>支付方式</th> <th>备注</th> <th>支付金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
+                 <th>订单编号</th> <th>订单类型</th> <th>订单日期</th> <th>订单摘要</th> <th>客户名称</th> <th>业务员</th> <th>支付类别</th> <th>合同总金额</th> <th>支付方式</th> <th>备注</th> <th>定金金额</th> <th>可抵免税款</th> <th>尚欠金额</th> <th>订单状态</th>
                 <th class="text-xs-right">操作</th>
               </tr>
               <tr>
                 <th class="text-xs-center">#</th>
-                 <th>P.O no</th> <th>P.O type</th> <th>P.O date</th> <th>P.O detail</th> <th>client name</th> <th>sales</th> <th>payment_type</th> <th>total_payment</th> <th>payment_terms</th> <th>note</th> <th>payment_amount</th> <th>2307</th> <th>balance</th> <th>P.O state</th>
+                 <th>P.O no</th> <th>P.O type</th> <th>P.O date</th> <th>P.O detail</th> <th>client name</th> <th>sales</th> <th>payment_type</th> <th>total_payment</th> <th>payment_terms</th> <th>note</th> <th>down payment</th> <th>2307</th> <th>balance</th> <th>P.O state</th>
                 <th class="text-xs-right">option</th>
               </tr>
             </thead>

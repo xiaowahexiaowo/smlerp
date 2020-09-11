@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="payment_amount-field">支付金额payment_amount</label>
+                    <label for="payment_amount-field">定金金额down payment</label>
                     <input class="form-control" type="text" name="payment_amount" id="payment_amount-field" value="{{ old('payment_amount', $order->payment_amount ) }}"  required />
                 </div>
                 <div class="form-group">
