@@ -32,7 +32,7 @@ class StocksController extends Controller
 
     public function show(Stock $stock)
     {
-        return view('stocks.show', compact('stock'));
+        return view('stocks.index', compact('stock'));
     }
 
 	public function create(Stock $stock)
@@ -48,7 +48,7 @@ class StocksController extends Controller
         $set=DB::table('settings')->where('generating_unit_no', $generating_unit_no)->first();
         if(!$set){
             session()->flash('warning', '机组编号不存在！');
-            return redirect()->route('orders.index');
+            return redirect()->route('stocks.index');
         }
          $stock->product_type=$set->product_type;
          $stock->generating_unit_type=$set->generating_unit_type;
@@ -66,7 +66,7 @@ class StocksController extends Controller
         $stock->stock_amount=($stock->inventory_quantity)*($set->warehousing_price);
         $stock->save();
         session()->flash('success', '创建成功！');
-		return redirect()->route('stocks.index', $stock->id);
+		return redirect()->route('stocks.index');
 	}
 
 	public function edit(Stock $stock)
