@@ -145,7 +145,7 @@
 
                 <div class="form-group mb-4">
                   <label for="" class="avatar-label">文件上传PO-Upload</label>
-                  <input type="file" name="avatar" class="form-control-file" >
+                  <input type="file" name="avatar" class="form-control-file"  required>
                 </div>
 
 
