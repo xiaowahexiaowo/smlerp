@@ -194,7 +194,7 @@
             _token: '{{ csrf_token() }}'
           },
           fileKey: 'upload_file',
-          connectionCount: 4,
+          connectionCount: 8,
           leaveConfirm: '文件上传中，关闭此页面将取消上传。'
         },
         pasteImage: true,

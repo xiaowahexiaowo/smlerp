@@ -65,7 +65,8 @@ class OrdersController extends Controller
         //尚欠金额=订单总金额-支付金额-2307可抵免税款     因为创建订单时，订单详情还没填写，所以尚欠金额创建时设为0 当订单详情填写后动态更改尚欠金额。  会有很多bug 如之后更改金额
 
          if ($request->avatar) {
-            $result = $uploader->save($request->avatar, 'avatars', 'file');
+            // 最大宽度为1200px  否则裁减
+            $result = $uploader->save($request->avatar, 'avatars', 'file',1200);
             if ($result) {
                 $order['avatar'] = $result['path'];
             }
