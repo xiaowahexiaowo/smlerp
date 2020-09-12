@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OutstockRequest;
 use Illuminate\Support\Facades\DB;
+use App\Exports\OutstocksExport;
 class OutstocksController extends Controller
 {
     public function __construct()
