@@ -14,9 +14,10 @@ class StocksController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    // 都有查看权限
+
 	public function index(StockRequest $request)
 	{
+         $this->authorize('index');
         $date_begin=$request->input('date_begin');
         $date_end=$request->input('date_end');
          // 保存查询参数  供导出时使用

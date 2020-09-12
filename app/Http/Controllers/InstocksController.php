@@ -18,6 +18,7 @@ class InstocksController extends Controller
 
 	public function index()
 	{
+        $this->authorize('index');
 		$instocks = Instock::paginate();
 		return view('instocks.index', compact('instocks'));
 	}
@@ -78,7 +79,7 @@ class InstocksController extends Controller
     }
 
     public function showDetail(InstockRequest $request, Instock $instock){
-        // $this->authorize('showDetail', $order);
+        $this->authorize('showDetail');
   // 按日期查询
 
         $date_begin=$request->input('date_begin');
