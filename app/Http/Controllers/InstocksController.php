@@ -16,9 +16,9 @@ class InstocksController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Instock $instock)
 	{
-        $this->authorize('index');
+        $this->authorize('index',$instock);
 		$instocks = Instock::paginate();
 		return view('instocks.index', compact('instocks'));
 	}
@@ -79,7 +79,7 @@ class InstocksController extends Controller
     }
 
     public function showDetail(InstockRequest $request, Instock $instock){
-        $this->authorize('showDetail');
+        $this->authorize('showDetail',$instock);
   // 按日期查询
 
         $date_begin=$request->input('date_begin');

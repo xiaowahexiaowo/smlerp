@@ -7,7 +7,7 @@ use App\Models\Instock;
 
 class InstockPolicy extends Policy
 {
-    public function index(User $user)
+    public function index(User $user,Instock $instock)
     {
         return $user->can('r_instocks');
     }
@@ -36,7 +36,7 @@ class InstockPolicy extends Policy
     {
         return $user->hasRole('Storekeeper');
     }
-     public function showDetail(User $user)
+     public function showDetail(User $user,Instock $instock)
     {
         return $user->can('r_instockdetails');
     }

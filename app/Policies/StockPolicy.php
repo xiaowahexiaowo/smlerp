@@ -8,7 +8,7 @@ use App\Models\Stock;
 class StockPolicy extends Policy
 {
 
-      public function index(User $user)
+      public function index(User $user,Stock $stock)
     {
         return $user->can('r_stocks');
     }
